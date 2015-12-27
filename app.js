@@ -24,41 +24,15 @@ const staticCache = require('koa-static-cache');
 app.use(staticCache(config.staticDir));
 
 
-app.use(function *() {
-    switch(this.path) {
-        case '/get':
-            get.call(this);
-            break;
-        case '/remove':
-            remove.call(this);
-            break;
-        case '/regenerate':
-            yield regenerate.call(this);
-            break;
-        default:
-            get.call(this);
-    }
-});
+const router = require('koa-router')();
 
+const indexRouter = require('./router/index');
+const sessionRouter = require('./router/session');
 
-function get() {
-    const session = this.session;
-    session.count = session.count || 0;
-    session.count += 1;
-    this.body = session.count;
-}
+router.use('/', indexRouter.routes());
+router.use('/session', sessionRouter.routes());
 
-
-function remove() {
-    this.session = null;
-    this.body = 0;
-}
-
-
-function *regenerate() {
-    yield this.regenerateSession();
-    get.call(this);
-}
+app.use(router.routes());
 
 
 app.listen(config.port);
