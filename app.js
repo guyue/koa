@@ -13,6 +13,10 @@ const session = require('koa-generic-session');
 
 app.use(session(app));
 
+const bodyParser = require('koa-body-parser');
+
+app.use(bodyParser());
+
 app.use(function *() {
     switch(this.path) {
         case '/get':
