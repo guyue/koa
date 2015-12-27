@@ -28,6 +28,11 @@ const staticCache = require('koa-static-cache');
 app.use(staticCache(config.staticDir));
 
 
+const csrf = require('koa-csrf');
+csrf(app);
+app.use(csrf.middleware);
+
+
 const router = require('koa-router')();
 
 const indexRouter = require('./router/index');
