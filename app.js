@@ -8,6 +8,10 @@ const app = koa();
 app.keys = ['study koa'];
 
 
+const compress = require('koa-compress');
+app.use(compress());
+
+
 const onerror = require('koa-onerror');
 onerror(app);
 

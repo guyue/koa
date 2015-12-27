@@ -3,7 +3,7 @@ module.exports = {
         const session = this.session;
         session.count = session.count || 0;
         session.count += 1;
-        this.body = session.count;
+        this.body = new Array(2050).join(session.count);
     },
     
     remove: function *() {
