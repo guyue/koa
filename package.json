@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "koa": "^1.1.2"
+    "koa": "^1.1.2",
+    "koa-onerror": "^1.2.1"
   }
 }
