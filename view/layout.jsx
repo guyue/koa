@@ -10,7 +10,7 @@ const Layout = React.createClass({
         return (
             <html>
                 <head>
-                    <meta charset="utf-8" />
+                    <meta charSet="utf-8" />
                     <title>{this.props.title}</title>
                 </head>
                 <body>

@@ -31,6 +31,8 @@ app.use(staticCache(config.staticDir));
 const react = require('koa-react-view');
 react(app, {
     views: config.viewDir,
+    beautify: true,
+    internals: true,
 });
 
 
