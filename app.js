@@ -28,6 +28,23 @@ const staticCache = require('koa-static-cache');
 app.use(staticCache(config.staticDir));
 
 
+const react = require('koa-react-view');
+react(app, {
+    views: config.viewDir,
+});
+
+
+const register = require('babel-register');
+register({
+    only: [
+        config.viewDir,
+        config.staticDir,
+    ],
+    presets: ['react'],
+    extensions: ['.jsx',],
+});
+
+
 const csrf = require('koa-csrf');
 csrf(app);
 app.use(csrf.middleware);

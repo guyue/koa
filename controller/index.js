@@ -1,5 +1,8 @@
 module.exports = {
     index: function *() {
-        this.body = 'Hello World!(' + this.csrf + ')';
+        this.render('index', {
+            title: 'React View',
+            csrf: this.csrf,
+        });
     },
 };
