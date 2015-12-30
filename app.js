@@ -55,10 +55,13 @@ app.use(csrf.middleware);
 const router = require('koa-router')();
 
 const indexRouter = require('./router/index');
-const sessionRouter = require('./router/session');
-
 router.use('/', indexRouter.routes());
+
+const sessionRouter = require('./router/session');
 router.use('/session', sessionRouter.routes());
+
+const lotteryRouter = require('./router/lottery');
+router.use('/lottery', lotteryRouter.routes());
 
 app.use(router.routes());
 
