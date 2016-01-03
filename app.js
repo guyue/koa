@@ -63,6 +63,9 @@ router.use('/session', sessionRouter.routes());
 const lotteryRouter = require('./router/lottery');
 router.use('/lottery', lotteryRouter.routes());
 
+const adminRouter = require('./router/admin');
+router.use('/admin', adminRouter.routes());
+
 app.use(router.routes());
 
 
