@@ -5,7 +5,6 @@ const Layout = require('../layout');
 const Index = React.createClass({
     propTypes: {
         title: React.PropTypes.string,
-        list: React.PropTypes.array,
     },
 
     render: function () {
