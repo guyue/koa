@@ -42,8 +42,13 @@ register({
         config.viewDir,
         config.staticDir,
     ],
-    presets: ['react'],
-    extensions: ['.jsx',],
+    presets: [
+        'es2015',
+        'react',
+    ],
+    extensions: [
+        '.jsx',
+    ],
 });
 
 
