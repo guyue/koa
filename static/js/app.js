@@ -5,7 +5,6 @@
      * 加载完毕后
      */
     function loader() {
-		$('#copyleft').fadeOut();
 		$('#content, .trigger').addClass('active');
     
 		//空格控制
@@ -26,20 +25,8 @@
 
 
     $(document).ready(function() {
-		var per = $('#loader .inner');
     
-		$("#loader").addClass("ready");
-		per.css('width', '100%');
-		setTimeout(function() {
-            per.css('transform', 'scale(1, 1)')
-        }, 550);
-    
-        setTimeout(function(){
-        	$("#loader").animate({'opacity': 0}, 'fast', function() { $(this).remove() });
-			$('#copyleft').addClass('active');
-        }, 750);
-    
-		setTimeout(loader, 5000);
+        loader();
     
 		$('.trigger').on('click', function(){
 			if( !$(this).data('active') ){

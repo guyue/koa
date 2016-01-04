@@ -26,13 +26,14 @@ export default class Index extends Component {
 					</aside>
 					
 					<section id="container" className="clearfix">
-						<div className="html5_video">
+						<div className="html5-video">
 							<video autoPlay loop src="video/cloud.mp4"></video>
 						</div>
             
 						<div id="copyleft">
-							<div className="favicon"><span>宝</span><span>宝</span><span>树</span></div>
-							<div className="copyright">babytree.com</div>
+							<span>宝</span>
+                            <span>宝</span>
+                            <span>树</span>
 						</div>
             
 						<section id="content" className="clearfix">
