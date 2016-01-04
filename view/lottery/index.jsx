@@ -1,13 +1,14 @@
-const React = require('react');
-const Layout = require('../layout');
+import React, {
+    Component,
+    PropTypes,
+}from 'react';
+import Layout from '../layout';
 
 
-const Index = React.createClass({
-    propTypes: {
-        title: React.PropTypes.string,
-    },
+export default class Index extends Component {
 
-    render: function () {
+    render() {
+
         return (
             <Layout title={this.props.title}>
                 <link rel="stylesheet" href="css/screen.css" />
@@ -52,8 +53,11 @@ const Index = React.createClass({
             
             </Layout>
         );
-    },
-});
 
+    }
 
-module.exports = Index;
+}
+
+Index.propTypes = {
+    title: PropTypes.string.isRequired,
+};
