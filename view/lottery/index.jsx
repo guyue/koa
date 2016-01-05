@@ -13,9 +13,6 @@ export default class Index extends Component {
             <Layout title={this.props.title}>
                 <link rel="stylesheet" href="css/screen.css" />
 				<div id="wrapper">
-					<div id="loader"> 
-						<div className="inner"></div>
-					</div>
 					<aside className="zone-container">
 						<div className="trigger">
 							<i className="icon icon-filter"></i>
