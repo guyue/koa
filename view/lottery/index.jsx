@@ -4,6 +4,8 @@ import React, {
 }from 'react';
 import Layout from '../layout';
 
+import Background from './background';
+
 
 export default class Index extends Component {
 
@@ -12,6 +14,7 @@ export default class Index extends Component {
         return (
             <Layout title={this.props.title}>
                 <link rel="stylesheet" href="css/screen.css" />
+                <Background />
 				<div id="wrapper">
 					<aside className="zone-container">
 						<div className="trigger">
@@ -23,9 +26,6 @@ export default class Index extends Component {
 					</aside>
 					
 					<section id="container" className="clearfix">
-						<div className="html5-video">
-							<video autoPlay loop src="video/cloud.mp4"></video>
-						</div>
             
 						<div id="copyleft">
 							<span>宝</span>
