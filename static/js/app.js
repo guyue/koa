@@ -6,20 +6,6 @@
      */
     function loader() {
     
-        //空格控制
-        var lock = true,
-            boot = Lucky();
-
-        $(document).on('keydown.lazyloader', function (e) {
-    
-            if ([32, 13, 38, 40].indexOf(e.keyCode) > 0) {//空格，回车，上方向键，下方向键
-                if (lock) {
-                    lock = boot.start();
-                } else {
-                    lock = boot.lottery();
-                }
-            }
-        });
     }
 
 
