@@ -1,40 +1,11 @@
 @import url("reset.css");
+@import url("scrollbar.css");
 @import url("background.css");
+@import url("copyleft.css");
 
 html,body{ 
-	height: 100% 
+    height: 100% 
 }
-
-::-webkit-scrollbar-track {
-    background:none;
-    border: thin solid lightgray;
-    box-shadow: 0px 0px 1px none inset;
-    border-radius:10px;
-    border:none;
-}
-::-webkit-scrollbar-thumb{   
-    background-color: rgba(0, 0, 0, 0.198039);   
-    height:50px;   
-    -webkit-border-radius:8px;   
-}   
-  
-/*---鼠标点击滚动条显示样式--*/  
-::-webkit-scrollbar-thumb:hover{   
-    background-color: rgba(0, 0, 0, 0.298039);   
-    height:50px;   
-    -webkit-border-radius:8px;   
-}   
-  
-/*---滚动条大小--*/  
-::-webkit-scrollbar{   
-    width:7px;   
-}   
-  
-/*---滚动框背景样式--*/  
-::-webkit-scrollbar-track-piece{   
-    -webkit-border-radius:0;   
-}
-
 
 .clearfix {
     *zoom: 1
@@ -330,126 +301,6 @@ legend:after{
     z-index: 9;
 }
 
-/* 
- * ##copyleft##
- */
-#copyleft {
-	position: fixed;
-	top: 50px;
-    right: 50px;
-	z-index: 99999;
-	font: 700 114px/1 arial;
-	text-align: center;
-	color: #fff;
-
-	-webkit-transform: scale(.9, .9);
-	   -moz-transform: scale(.9, .9);
-	    -ms-transform: scale(.9, .9);
-	        transform: scale(.9, .9);
-	-webkit-animation: loading 4s linear .6s infinite forwards;
-	   -moz-animation: loading 4s linear .6s infinite forwards;
-	    -ms-animation: loading 4s linear .6s infinite forwards;
-	        animation: loading 4s linear .6s infinite forwards;
-}
-
-#copyleft span {
-    position: relative;
-    display: inline-block;
-    margin-right: .3em;
-}
-
-#copyleft span:after {
-    position: absolute;
-    top: -15%;
-    left: -15%;
-  	display: block;
-    width: 130%;
-    height: 130%;
-    border-radius: 100%;
-	content: '';
-	box-shadow: -5px -5px 0 -5px rgba(255, 255, 255, 1);
-	-webkit-animation: rotate .8s linear .6s infinite;
-	   -moz-animation: rotate .8s linear .6s infinite;
-	    -ms-animation: rotate .8s linear .6s infinite;
-	        animation: rotate .8s linear .6s infinite;
-}
-
-@-webkit-keyframes loading {
-    50% {
-        opacity: .5;
-    }
-
-    100%{
-		opacity: 1;
-    }
-}
-
-@-moz-keyframes loading {
-    50% {
-        opacity: .5;
-    }
-
-    100%{
-		opacity: 1;
-    }
-}
-
-@-ms-keyframes loading {
-  	50% {
-        opacity: .5;
-    }
-
-    100%{
-		opacity: 1;
-    }
-}
-
-@keyframes loading {
-    50% {
-        opacity: .5;
-    }
-
-    100%{
-		opacity: 1;
-    }
-}
-
-@-webkit-keyframes rotate {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-
-    to {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-@-moz-keyframes rotate {
-    from {
-        -moz-transform: rotate(0deg);
-    }
-
-    to {
-        -moz-transform: rotate(360deg);
-    }
-}
-
-@keyframes rotate {
-    from {
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-
-    to {
-        -webkit-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-         -ms-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-
 .flicker {
     position: fixed;
     top: 50%;
@@ -486,14 +337,14 @@ legend:after{
 }  
 
 .name-container {
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	width: 886px;
-	
-	margin-top: 100px;
-	margin-left: -443px;
-  	text-align: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 886px;
+    
+    margin-top: 100px;
+    margin-left: -443px;
+      text-align: center;
 }
 .name-container {
     /*margin-top: -140px;*/

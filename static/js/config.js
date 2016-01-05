@@ -125,17 +125,17 @@
         },
 
         initTemplate: function (data) {
-	        var html = '<div class="' + data.class + '">' +
-					'<h1>' + data.name + '</h1>' +
-					'<fieldset>' +
-						'<legend></legend>' +
-					'</fieldset>' +
-					'<div class="list">' +
-						'<ul class="win">' +
-						'</ul>' +
-						'<code>0/' + data.total + '</code>' +
-					'</div>' +
-				'</div>';
+            var html = '<div class="' + data.class + '">' +
+                    '<h1>' + data.name + '</h1>' +
+                    '<fieldset>' +
+                        '<legend></legend>' +
+                    '</fieldset>' +
+                    '<div class="list">' +
+                        '<ul class="win">' +
+                        '</ul>' +
+                        '<code>0/' + data.total + '</code>' +
+                    '</div>' +
+                '</div>';
             return html;
         },
 
@@ -151,10 +151,10 @@
 
         appearTemplate: function (img, name) {
             var html = '<li style="margin-left: 300px;">' +
-					'<div class="avatar"><img width="34" src="' + img + '"/></div>' +
-					'<div class="name">' + name + '</div>' +
-					'<button class="icon icon-delete" title="删除">删除</button>' +
-				'</li>';
+                    '<div class="avatar"><img width="34" src="' + img + '"/></div>' +
+                    '<div class="name">' + name + '</div>' +
+                    '<button class="icon icon-delete" title="删除">删除</button>' +
+                '</li>';
 
             return html;
         },
