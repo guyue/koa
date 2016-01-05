@@ -6,6 +6,7 @@ import Layout from '../layout';
 
 import Background from './background';
 import Copyleft from './copyleft';
+import Board from './board';
 
 
 export default class Index extends Component {
@@ -17,13 +18,7 @@ export default class Index extends Component {
                 <link rel="stylesheet" href="css/screen.css" />
                 <Background />
                 <Copyleft />
-                <aside className="zone-container">
-                    <div className="trigger">
-                        <i className="icon icon-filter"></i>
-                    </div>
-                    <div className="board">
-                    </div>
-                </aside>
+                <Board />
                 <section id="container" className="clearfix">
                     <section id="content" className="clearfix">
                         <div className="flicker">
