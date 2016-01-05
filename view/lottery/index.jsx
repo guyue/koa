@@ -1,7 +1,7 @@
 import React, {
     Component,
     PropTypes,
-}from 'react';
+} from 'react';
 import Layout from '../layout';
 
 import Background from './background';
