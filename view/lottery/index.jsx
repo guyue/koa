@@ -7,6 +7,7 @@ import Layout from '../layout';
 import Background from './background';
 import Copyleft from './copyleft';
 import Board from './board';
+import Flicker from './Flicker';
 
 
 export default class Index extends Component {
@@ -19,22 +20,12 @@ export default class Index extends Component {
                 <Background />
                 <Copyleft />
                 <Board />
-                <section id="container" className="clearfix">
-                    <section id="content" className="clearfix">
-                        <div className="flicker">
-                            <img src="img/logo.png" width="256"/>
-                        </div>
-                        <div className="name-container clearfix">
-                            <span className="name"></span>
-                        </div>
-                    </section>
-                </section>
+                <Flicker />
                 <script src="js/jquery-2.0.3.min.js"></script>
                 <script src="js/name.js"></script>
                 <script src="js/config.js"></script>
                 <script src="js/lucky.js"></script>
                 <script src="js/app.js"></script>
-            
             </Layout>
         );
 
