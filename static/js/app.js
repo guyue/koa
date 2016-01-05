@@ -5,7 +5,6 @@
      * 加载完毕后
      */
     function loader() {
-        $('#content, .trigger').addClass('active');
     
         //空格控制
         var lock = true,
@@ -32,15 +31,15 @@
             if( !$(this).data('active') ){
                 $('.zone-container').addClass('active');
     
-                $('#content .flicker').css({'margin-left': 15});
-                $('#content .name-container').css({'margin-left': -293});
+                $('.flicker').css({'margin-left': 15});
+                $('.name-container').css({'margin-left': -293});
     
                 $(this).data('active', true);
             } else {
                 $('.zone-container').removeClass('active');
     
-                $('#content .flicker').css({'margin-left': -128});
-                $('#content .name-container').css({'margin-left': -443});
+                $('.flicker').css({'margin-left': -128});
+                $('.name-container').css({'margin-left': -443});
     
                 $(this).data('active', false);
             }

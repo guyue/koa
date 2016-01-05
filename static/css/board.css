@@ -39,15 +39,6 @@
     right: -95px;
     cursor: pointer;
     padding: 30px 30px;
-
-    opacity: 0;
-    -webkit-transition: all .8s ease;
-    -moz-transition: all .8s ease;
-    -o-transition: all .8s ease;
-    transition: all .8s ease;
-}
-
-.trigger.active{
     opacity: .74;
 }
 
