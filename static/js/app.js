@@ -12,7 +12,7 @@
 
         $(document).on('keydown.lazyloader', function (e) {
     
-            if (e.keyCode == 32) {//空格
+            if ([32, 13, 38, 40].indexOf(e.keyCode) > 0) {//空格，回车，上方向键，下方向键
                 if (lock) {
                     lock = boot.start();
                 } else {
