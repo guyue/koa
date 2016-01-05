@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 const koa = require('koa');
 const config = require('./config/config');
 
@@ -25,14 +27,14 @@ app.use(bodyParser());
 
 
 const staticCache = require('koa-static-cache');
-app.use(staticCache(config.staticDir));
+app.use(staticCache(path.join(config.staticDir, 'dist')));
+app.use(staticCache(path.join(config.staticDir, 'src')));
 
 
 const react = require('koa-react-view');
 react(app, {
     views: config.viewDir,
     beautify: true,
-    internals: true,
 });
 
 

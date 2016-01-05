@@ -2,12 +2,11 @@ import React, {
     Component,
     PropTypes,
 } from 'react';
-import Layout from '../layout';
 
-import Background from './background';
-import Copyleft from './copyleft';
-import Board from './board';
-import Flicker from './Flicker';
+import ReactDOMServer from 'react-dom/server';
+
+import Layout from '../layout';
+import Lottery from './lottery';
 
 
 export default class Index extends Component {
@@ -16,16 +15,14 @@ export default class Index extends Component {
 
         return (
             <Layout title={this.props.title}>
-                <link rel="stylesheet" href="css/screen.css" />
-                <Background />
-                <Copyleft />
-                <Board />
-                <Flicker />
+                <div id="app" dangerouslySetInnerHTML={{__html: ReactDOMServer.renderToString(<Lottery />)}} />
                 <script src="js/jquery-2.0.3.min.js"></script>
                 <script src="js/name.js"></script>
                 <script src="js/config.js"></script>
                 <script src="js/lucky.js"></script>
                 <script src="js/app.js"></script>
+                <script src="vendors.js"></script>
+                <script src="lottery.js"></script>
             </Layout>
         );
 
