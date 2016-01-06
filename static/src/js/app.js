@@ -13,23 +13,6 @@
     
         loader();
     
-        $('.trigger').on('click', function(){
-            if( !$(this).data('active') ){
-                $('.zone-container').addClass('active');
-    
-                $('.flicker').css({'margin-left': 15});
-                $('.name-container').css({'margin-left': -293});
-    
-                $(this).data('active', true);
-            } else {
-                $('.zone-container').removeClass('active');
-    
-                $('.flicker').css({'margin-left': -128});
-                $('.name-container').css({'margin-left': -443});
-    
-                $(this).data('active', false);
-            }
-        });
     
         config.init();
     
