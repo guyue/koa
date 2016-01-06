@@ -1,18 +1,7 @@
 (function (global, $, document, undefined) {
     'use strict';
 
-    /* 
-     * 加载完毕后
-     */
-    function loader() {
-    
-    }
-
-
     $(document).ready(function() {
-    
-        loader();
-    
     
         config.init();
     
