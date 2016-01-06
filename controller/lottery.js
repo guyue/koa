@@ -6,6 +6,7 @@ module.exports = {
         this.render('lottery/index', {
             title: 'React Lottery',
             users: users,
+            prize: require('../data/prize'),
             csrf: this.csrf,
         });
     },

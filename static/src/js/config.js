@@ -1,11 +1,6 @@
 (function (global, $, document, undefined) {
     'use strict';
 
-    //除chrome外，其他支持需要在服务器上运行才支持
-    if (!global.localStorage) {
-        global.alert('This browser does NOT support localStorage');
-    }
-
     /*
      * config 奖项设置
      * localStorage 存储设置
@@ -14,24 +9,9 @@
     var config = {
         awards: 'grateful',
 
-        total: global.dataSource.length,
+        total: global.users.length,
 
-        /*
-         * 一等奖1名
-         * 二等奖3名
-         * 三等奖5名
-         * 四等奖10名
-         * 五等奖20名
-         * 六等奖30名
-         */
-        keycode: {
-            '49': { 'class': 'first',    'name': '一等奖', 'total': 1 },
-            '50': { 'class': 'second',   'name': '二等奖', 'total': 3 },
-            '51': { 'class': 'third',    'name': '三等奖', 'total': 5 },
-            '52': { 'class': 'fourth',   'name': '四等奖', 'total': 10 },
-            '53': { 'class': 'fifth',    'name': '五等奖', 'total': 20 },
-            '54': { 'class': 'grateful', 'name': '感恩奖', 'total': 30 }
-        },
+        keycode: global.prize,
 
         get: function (key) {
             return global.localStorage.getItem(key) || '';
@@ -160,7 +140,7 @@
         },
     
         appear: function (selector, num) {
-            var data = global.dataSource[num],
+            var data = global.users[num],
                 code = selector.find('code'),
                 ratio = code.html(),
                 min = ~~/(\d+)\/\d+/.exec(ratio)[1],

@@ -36,7 +36,7 @@ function Lucky(){
         },
 
         update: function (index) {
-            var result = dataSource[index],
+            var result = users[index],
                 image = result.image,
                 name = result.name;
 
