@@ -20,7 +20,6 @@ export default class Index extends Component {
                 <script src="js/jquery-2.0.3.min.js"></script>
                 <script src="js/config.js"></script>
                 <script src="js/lucky.js"></script>
-                <script src="js/app.js"></script>
                 <script src="vendors.js"></script>
                 <script src="lottery.js"></script>
             </Layout>
