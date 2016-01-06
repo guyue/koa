@@ -10,6 +10,19 @@ import Flicker from './Flicker.jsx';
 
 export default class Lottery extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            user: {
+                department: '宝宝树',
+                name: '宝宝树',
+                phone: '12345678901',
+                image: 'img/logo.png',
+            }
+        };
+    }
+
     componentDidMount() {
 
         config.init();
@@ -74,7 +87,7 @@ export default class Lottery extends Component {
                 <Background />
                 <Copyleft />
                 <Board />
-                <Flicker />
+                <Flicker user={this.state.user} />
             </div>
         );
 

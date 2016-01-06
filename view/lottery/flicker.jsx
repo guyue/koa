@@ -7,13 +7,15 @@ export default class Flicker extends Component {
 
     render() {
 
+        const user = this.props.user;
+
         return (
             <div>
                 <div className="flicker">
-                    <img src="img/logo.png" width="256"/>
+                    <img src={user.image} width="256"/>
                 </div>
                 <div className="name-container">
-                    <span className="name"></span>
+                    <span className="name">{user.name}</span>
                 </div>
             </div>
         );
@@ -21,3 +23,12 @@ export default class Flicker extends Component {
     }
 
 }
+
+Flicker.propTypes = {
+    user: PropTypes.shape({
+        department: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+    }).isRequired,
+};
