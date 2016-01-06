@@ -1,6 +1,8 @@
 *.swp
 *.log
 
+*.css
+
 
 node_modules
 log

@@ -14,7 +14,7 @@ export default class Lottery extends Component {
 
         return (
             <div>
-                <link rel="stylesheet" href="lottery.css" />
+                <link rel="stylesheet" href="less/lottery.css" />
                 <Background />
                 <Copyleft />
                 <Board />

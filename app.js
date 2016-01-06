@@ -18,17 +18,23 @@ const onerror = require('koa-onerror');
 onerror(app);
 
 
+const less = require('koa-less');
+app.use(less(path.join(config.staticDir, 'src')));
+
+
+const staticCache = require('koa-static-cache');
+app.use(staticCache(path.join(config.staticDir, 'dist')));
+app.use(staticCache(path.join(config.staticDir, 'src'), {
+    dynamic: true,
+}));
+
+
 const session = require('koa-generic-session');
 app.use(session(app));
 
 
 const bodyParser = require('koa-bodyparser');
 app.use(bodyParser());
-
-
-const staticCache = require('koa-static-cache');
-app.use(staticCache(path.join(config.staticDir, 'dist')));
-app.use(staticCache(path.join(config.staticDir, 'src')));
 
 
 const react = require('koa-react-view');
