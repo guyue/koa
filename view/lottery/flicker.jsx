@@ -12,7 +12,7 @@ export default class Flicker extends Component {
 
         $(document).on('keydown.flicker', (e) => {
             //空格，回车，上方向键，下方向键
-            if ([32, 13, 38, 40].indexOf(e.keyCode) > 0) {
+            if ([32, 13, 38, 40].indexOf(e.keyCode) >= 0) {
                 if (this.lock) {
                     this.lock = this.boot.start();
                 } else {
