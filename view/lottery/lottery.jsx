@@ -12,12 +12,15 @@ export default class Lottery extends Component {
 
     componentDidMount() {
 
+        config.init();
+
         this.lock = true;
         this.boot = Lucky();
 
-        $(document).on('keydown.flicker', (e) => {
+        $(document).on('keydown.lottery', (e) => {
             //空格，回车，上方向键，下方向键
             if ([32, 13, 38, 40].indexOf(e.keyCode) >= 0) {
+                e.preventDefault();
                 if (this.lock) {
                     this.lock = this.boot.start();
                 } else {
@@ -26,11 +29,40 @@ export default class Lottery extends Component {
             }
         });
 
+        /*
+         *更换壁纸、设置全局抽奖奖项
+         *键盘操作[1: 一等奖, 2: 二等奖, 3: 三等奖, 4: 感恩奖，0: 全显]
+         *CTRL + DEL 重置
+         */
+        $(document).on('keydown.lottery', function( e ) {
+            var k = config.keycode[e.keyCode];
+            if(!!k) {
+                e.preventDefault();
+                config.awards = k.class;
+    
+                $('.' + config.awards).addClass('active').siblings().removeClass('active')
+    
+                //background
+    
+            } else if (e.keyCode == 48){
+                e.preventDefault();
+                config.awards = 'grateful';
+    
+                $('.board > div').addClass('active');
+            } else if (e.ctrlKey && e.keyCode == 192) {
+                // 192 = 反单引号(1左侧)
+    
+                config.clear();
+    
+                window.location.reload()
+            }
+        })
+
     }
 
     componentWillUnmount() {
 
-        $(document).off('keydown.flicker');
+        $(document).off('keydown.lottery');
 
     }
 
