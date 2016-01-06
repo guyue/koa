@@ -13,6 +13,7 @@ let config = {
     viewDir: path.join(__dirname, '..', 'view'),
     logDir: path.join(__dirname, '..', 'log'),
     staticDir: path.join(__dirname, '..', 'static'),
+    avatarDir: path.join(__dirname, '..', 'static/src/avatar'),
 
 };
 

@@ -16,8 +16,8 @@ export default class Index extends Component {
         return (
             <Layout title={this.props.title}>
                 <div id="app" dangerouslySetInnerHTML={{__html: ReactDOMServer.renderToString(<Lottery />)}} />
+                <script dangerouslySetInnerHTML={{__html: `window.dataSource=${JSON.stringify(this.props.users)}`}}></script>
                 <script src="js/jquery-2.0.3.min.js"></script>
-                <script src="js/name.js"></script>
                 <script src="js/config.js"></script>
                 <script src="js/lucky.js"></script>
                 <script src="js/app.js"></script>
@@ -32,4 +32,10 @@ export default class Index extends Component {
 
 Index.propTypes = {
     title: PropTypes.string.isRequired,
+    users: PropTypes.arrayOf(PropTypes.shape({
+        department: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+    }).isRequired).isRequired,
 };
