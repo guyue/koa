@@ -50,6 +50,9 @@ class Lottery extends Component {
             //空格，上方向键，下方向键
             if ([32, 38, 40].indexOf(e.keyCode) >= 0) {
                 e.preventDefault();
+                if (this.props.raffled.length >= this.props.rank.total) {
+                    return;
+                }
                 if (this.lock) {
                     this.timer = setInterval(() => {
                         this.props.dispatch(glance(this.random()));
