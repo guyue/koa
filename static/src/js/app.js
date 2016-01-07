@@ -8,7 +8,7 @@ import {
 } from 'react-redux';
 
 import Lottery from '../../../common/container/lottery.jsx';
-import reducers from '../../../common/reducer/index';
+import reducers from '../../../common/Reducers';
 
 
 const store = createStore(reducers, {

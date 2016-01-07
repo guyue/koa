@@ -4,7 +4,7 @@ import {
 
 import {
     ActionConstants,
-} from '../constant/action';
+} from './AppConstants';
 
 function user(state = {
             department: '宝宝树',

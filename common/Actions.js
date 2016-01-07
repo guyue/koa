@@ -1,6 +1,6 @@
 import {
     ActionConstants,
-} from '../constant/action';
+} from './AppConstants';
 
 export function glance() {
     return {
