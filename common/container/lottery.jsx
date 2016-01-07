@@ -15,6 +15,7 @@ import {
     glance,
     raffle,
     changeRank,
+    clearAll,
 } from '../Actions';
 
 
@@ -47,7 +48,7 @@ class Lottery extends Component {
 
         $(document).on('keydown.lottery', (e) => {
             //空格，回车，上方向键，下方向键
-            if ([32, 13, 38, 40].indexOf(e.keyCode) >= 0) {
+            if ([32, 38, 40].indexOf(e.keyCode) >= 0) {
                 e.preventDefault();
                 if (this.lock) {
                     this.timer = setInterval(() => {
@@ -62,28 +63,14 @@ class Lottery extends Component {
         });
 
         /*
-         *更换壁纸、设置全局抽奖奖项
-         *键盘操作[1: 一等奖, 2: 二等奖, 3: 三等奖, 4: 感恩奖]
-         *CTRL + DEL 重置
+         *CTRL + 反单引号(1左侧) 重置
          */
-        $(document).on('keydown.lottery', function( e ) {
-            var k = config.keycode[e.keyCode];
-            if(!!k) {
-                e.preventDefault();
-                config.awards = k.class;
-    
-                $('.' + config.awards).addClass('active').siblings().removeClass('active')
-    
-                //background
-    
-            } else if (e.ctrlKey && e.keyCode == 192) {
+        $(document).on('keydown.lottery', (e) => {
+            if (e.ctrlKey && e.keyCode == 192) {
                 // 192 = 反单引号(1左侧)
-    
-                config.clear();
-    
-                window.location.reload()
+                this.props.dispatch(clearAll());
             }
-        })
+        });
 
     }
 

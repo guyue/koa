@@ -38,6 +38,8 @@ function users(state = [], action) {
             Object.assign({}, action.user),
             ...state.slice(action.index + 1)
         ];
+    } else if (action.type === ActionConstants.CLEAR_ALL) {
+        return window.users;
     }
     return state;
 }

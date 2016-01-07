@@ -24,3 +24,10 @@ export function changeRank(rank) {
     };
 }
 
+export function clearAll() {
+    storage.clear();
+    return {
+        type: ActionConstants.CLEAR_ALL,
+    };
+}
+
