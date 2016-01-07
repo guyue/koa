@@ -16,5 +16,5 @@ const store = createStore(reducers, {
 });
 
 ReactDOM.render(<Provider store={store}>
-    <Lottery store={store} />
+    <Lottery />
 </Provider>, document.querySelector('#app'));
