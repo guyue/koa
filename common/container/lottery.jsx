@@ -47,7 +47,7 @@ class Lottery extends Component {
         this.timer = null;
 
         $(document).on('keydown.lottery', (e) => {
-            //空格，回车，上方向键，下方向键
+            //空格，上方向键，下方向键
             if ([32, 38, 40].indexOf(e.keyCode) >= 0) {
                 e.preventDefault();
                 if (this.lock) {
