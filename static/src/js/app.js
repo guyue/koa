@@ -9,10 +9,16 @@ import {
 
 import Lottery from '../../../common/container/lottery.jsx';
 import reducers from '../../../common/Reducers';
+import storage from './storage.js';
 
+function initUsers() {
+    return window.users.map((user) => {
+        return [storage.get(user), user].reduce(Object.assign, {});
+    });
+}
 
 const state = {
-    users: window.users,
+    users: initUsers(),
     prize: window.prize,
     rank: window.prize[0],
 }

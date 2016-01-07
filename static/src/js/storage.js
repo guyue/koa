@@ -14,6 +14,21 @@ function clear() {
 
 const storage = {
 
+    get: function (user) {
+
+        const users = getItem();
+
+        return users.find(function (value) {
+            if (user.department === value.department &&
+                    user.name === value.name &&
+                    user.phone === value.phone) {
+                return true;
+            }
+            return false;
+        });
+
+    },
+
     query: function (user) {
 
         const users = getItem();
