@@ -1,7 +1,4 @@
-/* 
- * ##sider##
- */
-.zone-container {
+.board-container {
     background: #fff;
     position: fixed;
     width: 300px;
@@ -23,16 +20,17 @@
     -moz-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
     -ms-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
     -o-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1)
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+
+    &.active {
+        -webkit-transform: translate(0, 0);
+        -moz-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
 }
 
-.zone-container.active {
-    -webkit-transform: translate(0, 0);
-    -moz-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    transform: translate(0, 0)
-}
 
 .trigger {
     position: absolute;
@@ -47,25 +45,17 @@
 }
 
 .icon {
-    display: block;
     display: inline-block;
+    overflow: hidden !important;
     font-size: 0;
     line-height: 0;
-    background-position: center center;
-    background-repeat: no-repeat;
     text-indent: 100% !important;
     white-space: nowrap !important;
-    overflow: hidden !important;
-    cursor: pointer;
-}
-
-.icon {
-    background-repeat: no-repeat;
-    display: -moz-inline-stack;
-    display: inline-block;
     vertical-align: middle;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
     zoom: 1;
-    text-indent: -9999px;
 }
 
 .icon-filter {
@@ -88,59 +78,47 @@
 }
 
 fieldset{
-    height: 20px;
     border-style: solid;
     border-width: 1px 0 0 0;
     border-color: #e5e5e5;
+
+    button {
+        position: relative;
+        top: -9px;
+        display: inline-block;
+        border: none;
+        width: 14px;
+        height: 14px;
+        margin-left: 31px;
+        border-radius: 100%;
+        cursor: pointer;
+
+        &.first {
+            background: #cc0000;
+        }
+        &.second {
+            background: #0099cc;
+        }
+        &.third {
+            background: #9966cc;
+        }
+        &.fourth {
+            background: #ff6600;
+        }
+        &.fifth {
+            background: #99cc00;
+        }
+        &.grateful {
+            background: #e4833d;
+        }
+    }
 }
 
-legend, legend:after{
-    width: 14px;
-    height: 14px;
-    border-radius: 100%;
-}
-
-legend{
-    margin-left: 34px;
-}
-
-legend:after{
-    content: '';
-    display: block;
-    
-    margin-left: 24px;
-}
-
-.first h1 {
+h1.first {
     background: url(../img/crown.png) 112px -10px no-repeat;
 }
 
-.first legend{
-    background: #cc0000;
-}
-
-.second legend{
-    background: #0099cc;
-}
-
-.third legend{
-    background: #9966cc;
-}
-
-.fourth legend{
-    background: #ff6600;
-}
-
-.fifth legend{
-    background: #99cc00;
-}
-
-.grateful legend{
-    background: #e4833d;
-}
-
-
-.board{
+.board {
     height: 100%;
     overflow-y: auto;
 
@@ -148,36 +126,18 @@ legend:after{
     font-weight: 400;
 
     background: url(../img/cat.gif) 105% 100% no-repeat;
+
+    h1{
+        font-size: 18px;
+        line-height: 60px;
+        text-align: center;
+        color: #000;
+    }
 }
 
-.board > div{
-    opacity: 0;
-    height: 0;
-    margin: 0;
-    overflow: hidden;
-    visibility: hidden;
-
-    -webkit-transition: all 1s;
-       -moz-transition: all 1s;
-        -ms-transition: all 1s;
-            transition: all 1s;
-}
-
-.board > div.active{
-    opacity: 1;
-    height: auto;
-    margin: 10px 0 30px;
-    visibility: visible;
-}
-
-.board h1{
-    font-size: 18px;
-    line-height: 60px;
-    text-align: center;
-    color: #000;
-}
 
 .list{
+    margin: 10px 0 30px;
     padding-left: 20px;
 }
 

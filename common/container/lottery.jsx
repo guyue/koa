@@ -40,8 +40,6 @@ class Lottery extends Component {
 
     componentDidMount() {
 
-        config.init();
-
         this.lock = true;
         this.boot = Lucky();
         this.timer = null;
