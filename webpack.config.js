@@ -14,7 +14,7 @@ module.exports = {
             test: /\.jsx?$/,
             include: [
                 path.resolve(__dirname, 'static/src'),
-                path.resolve(__dirname, 'view')
+                path.resolve(__dirname, 'common')
             ],
             exclude: [
                 nodeModulesPath
@@ -35,7 +35,7 @@ module.exports = {
         }]
     },
     entry: {
-        lottery: ['./static/src/lottery.js'],
+        app: ['./static/src/js/app.js'],
         vendors: ['babel-polyfill', 'react', 'react-dom', 'events', 'keymirror', 'classnames']
     },
     output: {

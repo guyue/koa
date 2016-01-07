@@ -28,7 +28,7 @@ export default class Index extends Component {
                 <script src="js/config.js"></script>
                 <script src="js/lucky.js"></script>
                 <script src="vendors.js"></script>
-                <script src="lottery.js"></script>
+                <script src="app.js"></script>
             </Layout>
         );
 
