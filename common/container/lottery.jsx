@@ -44,7 +44,6 @@ class Lottery extends Component {
     componentDidMount() {
 
         this.lock = true;
-        this.boot = Lucky();
         this.timer = null;
 
         $(document).on('keydown.lottery', (e) => {
