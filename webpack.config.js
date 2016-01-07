@@ -36,7 +36,7 @@ module.exports = {
     },
     entry: {
         app: ['./static/src/js/app.js'],
-        vendors: ['babel-polyfill', 'react', 'react-dom', 'events', 'keymirror', 'classnames']
+        vendors: ['babel-polyfill', 'react', 'react-dom', 'redux', 'react-redux', 'jquery', 'keymirror', 'classnames']
     },
     output: {
         path: path.resolve(__dirname, 'static/dist/'),

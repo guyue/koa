@@ -24,7 +24,6 @@ export default class Index extends Component {
                 <div id="app" />
                 <script dangerouslySetInnerHTML={{__html: `window.users=${JSON.stringify(this.props.users)}`}}></script>
                 <script dangerouslySetInnerHTML={{__html: `window.prize=${JSON.stringify(this.props.prize)}`}}></script>
-                <script src="js/jquery-2.0.3.min.js"></script>
                 <script src="vendors.js"></script>
                 <script src="app.js"></script>
             </Layout>

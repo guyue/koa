@@ -7,6 +7,8 @@ import {
     connect,
 } from 'react-redux';
 
+import $ from 'jquery';
+
 import Background from '../component/background.jsx';
 import Copyleft from '../component/copyleft.jsx';
 import Board from '../component/board.jsx';
@@ -32,7 +34,7 @@ class Lottery extends Component {
         }
 
         if (skipIsRaffled && users[index].rank) {
-            return random(skipIsRaffled);
+            return this.random(skipIsRaffled);
         }
 
         return {
