@@ -6,6 +6,10 @@ import {
     ActionConstants,
 } from './AppConstants';
 
+function rank(state = 'test', action) {
+    return state;
+}
+
 function user(state = {
             department: '宝宝树',
             name: '宝宝树',
@@ -38,6 +42,7 @@ function users(state = [], action) {
 }
 
 const reducers = combineReducers({
+    rank,
     user,
     users,
 });

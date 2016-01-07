@@ -22,6 +22,11 @@ class Lottery extends Component {
     random(skipIsRaffled) {
         const users = this.props.users;
         const index = Math.random() * users.length >>> 0;
+        const target = {};
+
+        if (skipIsRaffled) {
+            target.rank = this.props.rank;
+        }
 
         if (skipIsRaffled && users[index].isRaffled) {
             return random(skipIsRaffled);
@@ -29,7 +34,7 @@ class Lottery extends Component {
 
         return {
             index,
-            user: Object.assign({}, users[index]),
+            user: Object.assign(target, users[index]),
         };
     }
 
