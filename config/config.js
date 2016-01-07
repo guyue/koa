@@ -11,6 +11,7 @@ let config = {
     appName: 'Study Koa',
     port: 18080,
     viewDir: path.join(__dirname, '..', 'view'),
+    commonDir: path.join(__dirname, '..', 'common'),
     logDir: path.join(__dirname, '..', 'log'),
     staticDir: path.join(__dirname, '..', 'static'),
     avatarDir: path.join(__dirname, '..', 'static/src/avatar'),

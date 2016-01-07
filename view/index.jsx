@@ -6,7 +6,7 @@ import React, {
 import ReactDOMServer from 'react-dom/server';
 
 import Layout from './layout';
-import Lottery from './container/lottery';
+import Lottery from '../common/container/lottery';
 
 
 export default class Index extends Component {
@@ -21,7 +21,7 @@ export default class Index extends Component {
 
         return (
             <Layout title={this.props.title}>
-                <div id="app" />
+                <div id="app" dangerouslySetInnerHTML={this.renderLottery()} />
                 <script dangerouslySetInnerHTML={{__html: `window.users=${JSON.stringify(this.props.users)}`}}></script>
                 <script dangerouslySetInnerHTML={{__html: `window.prize=${JSON.stringify(this.props.prize)}`}}></script>
                 <script src="js/jquery-2.0.3.min.js"></script>
