@@ -47,7 +47,6 @@ const register = require('babel-register');
 register({
     only: [
         config.viewDir,
-        config.staticDir,
     ],
     presets: [
         'es2015',

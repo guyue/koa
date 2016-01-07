@@ -2,10 +2,10 @@ import React, {
     Component,
 } from 'react';
 
-import Background from './background.jsx';
-import Copyleft from './copyleft.jsx';
-import Board from './board.jsx';
-import Flicker from './Flicker.jsx';
+import Background from '../component/background.jsx';
+import Copyleft from '../component/copyleft.jsx';
+import Board from '../component/board.jsx';
+import Flicker from '../component/Flicker.jsx';
 
 
 export default class Lottery extends Component {
