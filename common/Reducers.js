@@ -25,6 +25,15 @@ function user(state = {
 }
 
 function users(state = [], action) {
+    if (action.type === ActionConstants.RAFFLE) {
+        return [
+            ...state.slice(0, action.index),
+            Object.assign({
+                isRaffled: true,
+            }, action.user),
+            ...state.slice(action.index + 1)
+        ];
+    }
     return state;
 }
 
