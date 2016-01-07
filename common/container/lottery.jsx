@@ -1,6 +1,11 @@
 import React, {
     Component,
+    PropTypes,
 } from 'react';
+
+import {
+    connect,
+} from 'react-redux';
 
 import Background from '../component/background.jsx';
 import Copyleft from '../component/copyleft.jsx';
@@ -8,20 +13,7 @@ import Board from '../component/board.jsx';
 import Flicker from '../component/Flicker.jsx';
 
 
-export default class Lottery extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            user: {
-                department: '宝宝树',
-                name: '宝宝树',
-                phone: '12345678901',
-                image: 'img/logo.png',
-            }
-        };
-    }
+class Lottery extends Component {
 
     componentDidMount() {
 
@@ -87,10 +79,25 @@ export default class Lottery extends Component {
                 <Background />
                 <Copyleft />
                 <Board />
-                <Flicker user={this.state.user} />
+                <Flicker user={this.props.user} />
             </div>
         );
 
     }
 
 }
+
+Lottery.propTypes = {
+    user: PropTypes.shape({
+        department: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+    }).isRequired,
+};
+
+function select(state) {
+    return state;
+}
+
+export default connect(select)(Lottery);
