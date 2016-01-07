@@ -44,7 +44,10 @@ export default class Board extends Component {
                             );
                         })}
                     </fieldset>
-                    <List />
+                    <List
+                        rank={this.props.rank}
+                        raffled={this.props.raffled}
+                    />
                 </div>
             </aside>
         );

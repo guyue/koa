@@ -29,7 +29,7 @@ class Lottery extends Component {
             target.rank = this.props.rank.key;
         }
 
-        if (skipIsRaffled && users[index].isRaffled) {
+        if (skipIsRaffled && users[index].rank) {
             return random(skipIsRaffled);
         }
 
@@ -106,6 +106,7 @@ class Lottery extends Component {
                 <Board
                     prize={this.props.prize}
                     rank={this.props.rank}
+                    raffled={this.props.raffled}
                     changeRank={(rank) => {
                         this.props.dispatch(changeRank(rank));
                     }}
@@ -127,8 +128,23 @@ Lottery.propTypes = {
     }).isRequired,
 };
 
+function raffled(users, rank) {
+    const result = [];
+
+    users.forEach(function (user) {
+        if (user.rank === rank.key) {
+            result.push(user);
+        }
+    });
+
+    return result;
+}
+
+
 function select(state) {
-    return state;
+    return Object.assign({
+        raffled: raffled(state.users, state.rank),
+    }, state);
 }
 
 export default connect(select)(Lottery);

@@ -8,12 +8,18 @@ import Item from './item.jsx';
 export default class List extends Component {
 
     render() {
+        const rank = this.props.rank;
+        const raffled = this.props.raffled;
         return (
             <div className="list">
                 <ul className="win">
-                    <Item />
+                    {raffled.map((user) => {
+                        return (
+                            <Item key={user.image} user={user} />
+                        );
+                    })}
                 </ul>
-                <code>0/data.total</code>
+                <code>{raffled.length}/{rank.total}</code>
             </div>
         );
     }
