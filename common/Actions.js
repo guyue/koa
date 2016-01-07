@@ -2,19 +2,17 @@ import {
     ActionConstants,
 } from './AppConstants';
 
-export function glance() {
+export function glance(user) {
     return {
         type: ActionConstants.GLANCE,
-        user: {
-        },
+        user,
     };
 }
 
-export function raffle() {
+export function raffle(user) {
     return {
         type: ActionConstants.RAFFLE,
-        user: {
-        },
+        user,
     };
 }
 

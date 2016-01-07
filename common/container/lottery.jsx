@@ -11,9 +11,22 @@ import Background from '../component/background.jsx';
 import Copyleft from '../component/copyleft.jsx';
 import Board from '../component/board.jsx';
 import Flicker from '../component/Flicker.jsx';
+import {
+    glance,
+    raffle,
+} from '../Actions';
 
 
 class Lottery extends Component {
+
+    random(skipIsRaffled) {
+        const users = this.props.users;
+        const index = Math.random() * users.length >>> 0;
+        if (skipIsRaffled && users[index].isRaffled) {
+            return random(skipIsRaffled);
+        }
+        return Object.assign({}, users[index]);
+    }
 
     componentDidMount() {
 
@@ -21,16 +34,21 @@ class Lottery extends Component {
 
         this.lock = true;
         this.boot = Lucky();
+        this.timer = null;
 
         $(document).on('keydown.lottery', (e) => {
             //空格，回车，上方向键，下方向键
             if ([32, 13, 38, 40].indexOf(e.keyCode) >= 0) {
                 e.preventDefault();
                 if (this.lock) {
-                    this.lock = this.boot.start();
+                    this.timer = setInterval(() => {
+                        this.props.dispatch(glance(this.random()));
+                    }, 100);
                 } else {
-                    this.lock = this.boot.lottery();
+                    clearInterval(this.timer);
+                    this.props.dispatch(raffle(this.random(true)));
                 }
+                this.lock = !this.lock;
             }
         });
 
@@ -68,6 +86,9 @@ class Lottery extends Component {
     componentWillUnmount() {
 
         $(document).off('keydown.lottery');
+        if (this.timer) {
+            clearInterval(this.timer);
+        }
 
     }
 
