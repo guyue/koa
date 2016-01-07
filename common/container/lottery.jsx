@@ -16,6 +16,7 @@ import {
     raffle,
     changeRank,
     clearAll,
+    removeRaffled,
 } from '../Actions';
 
 
@@ -99,6 +100,9 @@ class Lottery extends Component {
                     raffled={this.props.raffled}
                     changeRank={(rank) => {
                         this.props.dispatch(changeRank(rank));
+                    }}
+                    removeRaffled={(user) => {
+                        this.props.dispatch(removeRaffled(user));
                     }}
                 />
                 <Flicker user={this.props.user} />

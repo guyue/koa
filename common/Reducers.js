@@ -31,6 +31,18 @@ function user(state = {
 
 }
 
+function query(users, user) {
+
+    return users.findIndex(function (value) {
+        if (user.department === value.department &&
+                user.name === value.name &&
+                user.phone === value.phone) {
+            return true;
+        }
+        return false;
+    });
+
+}
 function users(state = [], action) {
     if (action.type === ActionConstants.RAFFLE) {
         return [
@@ -40,6 +52,14 @@ function users(state = [], action) {
         ];
     } else if (action.type === ActionConstants.CLEAR_ALL) {
         return window.users;
+    } else if (action.type === ActionConstants.REMOVE_RAFFLED) {
+        const index = query(state, action.user);
+
+        return [
+            ...state.slice(0, index),
+            Object.assign({}, action.user),
+            ...state.slice(index + 1)
+        ];
     }
     return state;
 }

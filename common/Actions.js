@@ -24,6 +24,14 @@ export function changeRank(rank) {
     };
 }
 
+export function removeRaffled(user) {
+    storage.remove(user);
+    return {
+        type: ActionConstants.REMOVE_RAFFLED,
+        user: user,
+    };
+}
+
 export function clearAll() {
     storage.clear();
     return {

@@ -46,6 +46,7 @@ export default class Board extends Component {
                     </fieldset>
                     <List
                         rank={this.props.rank}
+                        removeRaffled={this.props.removeRaffled}
                         raffled={this.props.raffled}
                     />
                 </div>

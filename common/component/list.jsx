@@ -15,7 +15,11 @@ export default class List extends Component {
                 <ul className="win">
                     {raffled.map((user) => {
                         return (
-                            <Item key={user.image} user={user} />
+                            <Item
+                                key={user.image}
+                                user={user}
+                                removeRaffled={this.props.removeRaffled}
+                            />
                         );
                     })}
                 </ul>
