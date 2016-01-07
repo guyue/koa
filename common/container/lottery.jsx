@@ -10,10 +10,11 @@ import {
 import Background from '../component/background.jsx';
 import Copyleft from '../component/copyleft.jsx';
 import Board from '../component/board.jsx';
-import Flicker from '../component/Flicker.jsx';
+import Flicker from '../component/flicker.jsx';
 import {
     glance,
     raffle,
+    changeRank,
 } from '../Actions';
 
 
@@ -25,7 +26,7 @@ class Lottery extends Component {
         const target = {};
 
         if (skipIsRaffled) {
-            target.rank = this.props.rank;
+            target.rank = this.props.rank.key;
         }
 
         if (skipIsRaffled && users[index].isRaffled) {
@@ -102,7 +103,13 @@ class Lottery extends Component {
                 <link rel="stylesheet" href="less/lottery.css" />
                 <Background />
                 <Copyleft />
-                <Board />
+                <Board
+                    prize={this.props.prize}
+                    rank={this.props.rank}
+                    changeRank={(rank) => {
+                        this.props.dispatch(changeRank(rank));
+                    }}
+                />
                 <Flicker user={this.props.user} />
             </div>
         );

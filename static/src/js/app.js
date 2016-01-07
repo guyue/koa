@@ -11,9 +11,14 @@ import Lottery from '../../../common/container/lottery.jsx';
 import reducers from '../../../common/Reducers';
 
 
-const store = createStore(reducers, {
-    users: window.users || [],
-});
+const state = {
+    users: window.users,
+    prize: window.prize,
+    rank: window.prize[0],
+}
+
+
+const store = createStore(reducers, state);
 
 ReactDOM.render(<Provider store={store}>
     <Lottery />

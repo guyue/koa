@@ -6,7 +6,7 @@ import React, {
 import ReactDOMServer from 'react-dom/server';
 
 import Layout from './layout';
-import Lottery from '../common/container/lottery';
+//import Lottery from '../common/container/lottery';
 
 
 export default class Index extends Component {
@@ -43,9 +43,9 @@ Index.propTypes = {
         phone: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
     }).isRequired).isRequired,
-    prize: PropTypes.objectOf(PropTypes.shape({
-        'class': PropTypes.string.isRequired,
-        'name': PropTypes.string.isRequired,
-        'total': PropTypes.number.isRequired,
-    })),
+    prize: PropTypes.arrayOf(PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        total: PropTypes.number.isRequired,
+    }).isRequired).isRequired,
 };

@@ -17,3 +17,10 @@ export function raffle(message) {
     }, message);
 }
 
+export function changeRank(rank) {
+    return {
+        type: ActionConstants.CHANGE_RANK,
+        rank,
+    };
+}
+

@@ -29,14 +29,20 @@ export default class Board extends Component {
                     <i className="icon icon-filter"></i>
                 </div>
                 <div className="board">
-                    <h1>一等奖</h1>
+                    <h1>{this.props.rank.name}</h1>
                     <fieldset>
-                        <button className="first"></button>
-                        <button className="second"></button>
-                        <button className="third"></button>
-                        <button className="fourth"></button>
-                        <button className="fifth"></button>
-                        <button className="grateful"></button>
+                        {this.props.prize.map((p) => {
+                            return (
+                                <button
+                                    key={p.key}
+                                    className={p.key}
+                                    title={p.name}
+                                    onClick={() => {
+                                        this.props.changeRank(p);
+                                    }}
+                                />
+                            );
+                        })}
                     </fieldset>
                     <List />
                 </div>
@@ -52,3 +58,12 @@ export default class Board extends Component {
     }
 
 }
+
+Board.propTypes = {
+    prize: PropTypes.arrayOf(PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        total: PropTypes.number.isRequired,
+    }).isRequired).isRequired,
+    changeRank: PropTypes.func.isRequired,
+};
