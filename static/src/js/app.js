@@ -17,13 +17,10 @@ function initUsers() {
     });
 }
 
-const state = {
+const store = createStore(reducers, {
     users: initUsers(),
     prizes: window.prizes,
-}
-
-
-const store = createStore(reducers, state);
+});
 
 ReactDOM.render(<Provider store={store}>
     <Lottery />
