@@ -30,7 +30,7 @@ class Lottery extends Component {
         const target = {};
 
         if (skipIsRaffled) {
-            target.prize = this.props.prize.key;
+            target.prize = this.props.selectedPrize.key;
         }
 
         if (skipIsRaffled && users[index].prize) {
@@ -52,7 +52,7 @@ class Lottery extends Component {
             //空格，上方向键，下方向键
             if ([32, 38, 40].indexOf(e.keyCode) >= 0) {
                 e.preventDefault();
-                if (this.props.raffled.length >= this.props.prize.total) {
+                if (this.props.raffled.length >= this.props.selectedPrize.total) {
                     return;
                 }
                 if (this.lock) {
@@ -97,7 +97,7 @@ class Lottery extends Component {
                 <Copyleft />
                 <Board
                     prizes={this.props.prizes}
-                    prize={this.props.prize}
+                    prize={this.props.selectedPrize}
                     raffled={this.props.raffled}
                     changePrize={(index) => {
                         this.props.dispatch(changePrize(index));
@@ -160,7 +160,7 @@ function select(state) {
     return Object.assign({
         raffled: raffled(state.users, prize),
         displayUser: displayUser(state.users, state.displayUserIndex),
-        prize,
+        selectedPrize: prize,
     }, state);
 }
 
