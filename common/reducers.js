@@ -42,7 +42,7 @@ function query(users, user) {
 }
 
 function initUsers(users) {
-    if (typeof __dirname === 'string') {
+    if (typeof window !== 'object') {
         return users;
     }
     return users.map((user) => {
