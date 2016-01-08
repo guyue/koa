@@ -1,6 +1,6 @@
 import {
     ActionConstants,
-} from './AppConstants';
+} from './constants';
 
 import storage from '../static/src/js/storage.js';
 

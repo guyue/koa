@@ -4,7 +4,7 @@ import {
 
 import {
     ActionConstants,
-} from './AppConstants';
+} from './constants';
 
 function rank(state = {}, action) {
     if (action.type === ActionConstants.CHANGE_RANK) {

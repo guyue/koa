@@ -19,7 +19,7 @@ import {
     changeRank,
     clearAll,
     removeRaffled,
-} from '../Actions';
+} from '../actions';
 
 
 class Lottery extends Component {
