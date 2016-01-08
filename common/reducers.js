@@ -42,6 +42,9 @@ function query(users, user) {
 }
 
 function initUsers(users) {
+    if (typeof __dirname === 'string') {
+        return users;
+    }
     return users.map((user) => {
         return Object.assign({}, storage.get(user), user);
     });
