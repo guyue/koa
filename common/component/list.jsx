@@ -11,8 +11,8 @@ export default class List extends Component {
         const prize = this.props.prize;
         const raffled = this.props.raffled;
         return (
-            <div className="list">
-                <ul className="win">
+            <div>
+                <ul className="list">
                     {raffled.map((user) => {
                         return (
                             <Item
@@ -23,7 +23,7 @@ export default class List extends Component {
                         );
                     })}
                 </ul>
-                <code>{raffled.length}/{prize.total}</code>
+                <code>{raffled.length} / {prize.total}</code>
             </div>
         );
     }

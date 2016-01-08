@@ -25,11 +25,15 @@ export default class Board extends Component {
             <aside className={classnames('board-container', {
                 active: this.state.expand,
             })}>
-                <div className="trigger" onClick={(e) => this.toggle(e)}>
-                    <i className="icon icon-filter"></i>
+                <div className="trigger" onClick={() => this.toggle()}>
+                    <i className="icon-filter"></i>
                 </div>
                 <div className="board">
-                    <h1>{this.props.prize.name}</h1>
+                    <h1 className={classnames({
+                        crown: this.props.prize.key === 'first',
+                    })}>
+                        {this.props.prize.name}
+                    </h1>
                     <fieldset>
                         {this.props.prizes.map((p, index) => {
                             return (

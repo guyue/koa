@@ -12,10 +12,10 @@ export default class Flicker extends Component {
         return (
             <div>
                 <div className="flicker">
-                    <img src={user.image} width="256"/>
+                    <img src={user.image} />
                 </div>
                 <div className="name-container">
-                    <span className="name">{user.name}</span>
+                    {user.name}
                 </div>
             </div>
         );
