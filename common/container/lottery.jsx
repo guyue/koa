@@ -121,6 +121,18 @@ Lottery.propTypes = {
         phone: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
     }).isRequired,
+    selectedPrize: PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        total: PropTypes.number.isRequired,
+    }).isRequired,
+    raffled: PropTypes.arrayOf(PropTypes.shape({
+        department: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        prize: PropTypes.string.isRequired,
+    })),
 };
 
 function raffled(users, prize) {
