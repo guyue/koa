@@ -8,7 +8,7 @@ import Item from './item.jsx';
 export default class List extends Component {
 
     render() {
-        const rank = this.props.rank;
+        const prize = this.props.prize;
         const raffled = this.props.raffled;
         return (
             <div className="list">
@@ -23,7 +23,7 @@ export default class List extends Component {
                         );
                     })}
                 </ul>
-                <code>{raffled.length}/{rank.total}</code>
+                <code>{raffled.length}/{prize.total}</code>
             </div>
         );
     }

@@ -4,6 +4,6 @@ export const ActionConstants = keyMirror({
     GLANCE: null,
     RAFFLE: null,
     REMOVE_RAFFLED: null,
-    CHANGE_RANK: null,
+    CHANGE_PRIZE: null,
     CLEAR_ALL: null,
 });

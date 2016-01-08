@@ -16,7 +16,7 @@ import Flicker from '../component/flicker.jsx';
 import {
     glance,
     raffle,
-    changeRank,
+    changePrize,
     clearAll,
     removeRaffled,
 } from '../actions';
@@ -30,10 +30,10 @@ class Lottery extends Component {
         const target = {};
 
         if (skipIsRaffled) {
-            target.rank = this.props.rank.key;
+            target.prize = this.props.prize.key;
         }
 
-        if (skipIsRaffled && users[index].rank) {
+        if (skipIsRaffled && users[index].prize) {
             return this.random(skipIsRaffled);
         }
 
@@ -52,7 +52,7 @@ class Lottery extends Component {
             //空格，上方向键，下方向键
             if ([32, 38, 40].indexOf(e.keyCode) >= 0) {
                 e.preventDefault();
-                if (this.props.raffled.length >= this.props.rank.total) {
+                if (this.props.raffled.length >= this.props.prize.total) {
                     return;
                 }
                 if (this.lock) {
@@ -96,11 +96,11 @@ class Lottery extends Component {
                 <Background />
                 <Copyleft />
                 <Board
+                    prizes={this.props.prizes}
                     prize={this.props.prize}
-                    rank={this.props.rank}
                     raffled={this.props.raffled}
-                    changeRank={(rank) => {
-                        this.props.dispatch(changeRank(rank));
+                    changePrize={(index) => {
+                        this.props.dispatch(changePrize(index));
                     }}
                     removeRaffled={(user) => {
                         this.props.dispatch(removeRaffled(user));
@@ -123,11 +123,11 @@ Lottery.propTypes = {
     }).isRequired,
 };
 
-function raffled(users, rank) {
+function raffled(users, prize) {
     const result = [];
 
     users.forEach(function (user) {
-        if (user.rank === rank.key) {
+        if (user.prize === prize.key) {
             result.push(user);
         }
     });
@@ -150,11 +150,17 @@ function displayUser(users, index) {
 
 }
 
+function selectedPrize(prizes, index) {
+    return Object.assign({}, prizes[index]);
+}
+
 
 function select(state) {
+    const prize = selectedPrize(state.prizes, state.selectedPrizeIndex);
     return Object.assign({
-        raffled: raffled(state.users, state.rank),
+        raffled: raffled(state.users, prize),
         displayUser: displayUser(state.users, state.displayUserIndex),
+        prize,
     }, state);
 }
 

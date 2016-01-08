@@ -16,7 +16,7 @@ export default class Item extends Component {
                     title="删除"
                     onClick={() => {
                         const action = Object.assign({}, user);
-                        Reflect.deleteProperty(action, 'rank');
+                        Reflect.deleteProperty(action, 'prize');
                         this.props.removeRaffled(action);
                     }}
                 >删除</button>

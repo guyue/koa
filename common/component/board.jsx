@@ -29,23 +29,23 @@ export default class Board extends Component {
                     <i className="icon icon-filter"></i>
                 </div>
                 <div className="board">
-                    <h1>{this.props.rank.name}</h1>
+                    <h1>{this.props.prize.name}</h1>
                     <fieldset>
-                        {this.props.prize.map((p) => {
+                        {this.props.prizes.map((p, index) => {
                             return (
                                 <button
                                     key={p.key}
                                     className={p.key}
                                     title={p.name}
                                     onClick={() => {
-                                        this.props.changeRank(p);
+                                        this.props.changePrize(index);
                                     }}
                                 />
                             );
                         })}
                     </fieldset>
                     <List
-                        rank={this.props.rank}
+                        prize={this.props.prize}
                         removeRaffled={this.props.removeRaffled}
                         raffled={this.props.raffled}
                     />
@@ -64,10 +64,10 @@ export default class Board extends Component {
 }
 
 Board.propTypes = {
-    prize: PropTypes.arrayOf(PropTypes.shape({
+    prizes: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         total: PropTypes.number.isRequired,
     }).isRequired).isRequired,
-    changeRank: PropTypes.func.isRequired,
+    changePrize: PropTypes.func.isRequired,
 };

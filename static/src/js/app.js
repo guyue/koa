@@ -19,8 +19,7 @@ function initUsers() {
 
 const state = {
     users: initUsers(),
-    prize: window.prize,
-    rank: window.prize[0],
+    prizes: window.prizes,
 }
 
 

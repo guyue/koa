@@ -23,7 +23,7 @@ export default class Index extends Component {
             <Layout title={this.props.title}>
                 <div id="app" />
                 <script dangerouslySetInnerHTML={{__html: `window.users=${JSON.stringify(this.props.users)}`}}></script>
-                <script dangerouslySetInnerHTML={{__html: `window.prize=${JSON.stringify(this.props.prize)}`}}></script>
+                <script dangerouslySetInnerHTML={{__html: `window.prizes=${JSON.stringify(this.props.prizes)}`}}></script>
                 <script src="vendors.js"></script>
                 <script src="app.js"></script>
             </Layout>
@@ -41,7 +41,7 @@ Index.propTypes = {
         phone: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
     }).isRequired).isRequired,
-    prize: PropTypes.arrayOf(PropTypes.shape({
+    prizes: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         total: PropTypes.number.isRequired,

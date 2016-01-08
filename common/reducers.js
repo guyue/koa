@@ -6,9 +6,9 @@ import {
     ActionConstants,
 } from './constants';
 
-function rank(state = {}, action) {
-    if (action.type === ActionConstants.CHANGE_RANK) {
-        return action.rank;
+function selectedPrizeIndex(state = 0, action) {
+    if (action.type === ActionConstants.CHANGE_PRIZE) {
+        return action.index;
     }
     return state;
 }
@@ -59,13 +59,13 @@ function users(state = [], action) {
     return state;
 }
 
-function prize(state = [], action) {
+function prizes(state = [], action) {
     return state;
 }
 
 const reducers = combineReducers({
-    rank,
-    prize,
+    prizes,
+    selectedPrizeIndex,
     users,
     displayUserIndex,
 });
