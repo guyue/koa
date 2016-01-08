@@ -48,6 +48,7 @@ register({
     only: [
         config.viewDir,
         config.commonDir,
+        config.staticDir,
     ],
     presets: [
         'es2015',
@@ -55,6 +56,7 @@ register({
     ],
     extensions: [
         '.jsx',
+        '.js',
     ],
 });
 
