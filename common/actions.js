@@ -39,3 +39,9 @@ export function clearAll() {
     };
 }
 
+export function initUsers() {
+    return {
+        type: ActionConstants.INIT_USERS,
+    };
+}
+

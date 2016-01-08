@@ -6,6 +6,8 @@ import {
     ActionConstants,
 } from './constants';
 
+import storage from '../static/src/js/storage.js';
+
 function selectedPrizeIndex(state = 0, action) {
     if (action.type === ActionConstants.CHANGE_PRIZE) {
         return action.index;
@@ -38,15 +40,25 @@ function query(users, user) {
     });
 
 }
+
+function initUsers(users) {
+    return users.map((user) => {
+        return Object.assign({}, storage.get(user), user);
+    });
+}
+
+
 function users(state = [], action) {
-    if (action.type === ActionConstants.RAFFLE) {
+    if (action.type === ActionConstants.INIT_USERS) {
+        return initUsers(state);
+    } else if (action.type === ActionConstants.RAFFLE) {
         return [
             ...state.slice(0, action.index),
             Object.assign({}, action.user),
             ...state.slice(action.index + 1)
         ];
     } else if (action.type === ActionConstants.CLEAR_ALL) {
-        return window.users;
+        return window.__INITIAL_STATE__.users;
     } else if (action.type === ActionConstants.REMOVE_RAFFLED) {
         const index = query(state, action.user);
 

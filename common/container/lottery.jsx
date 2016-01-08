@@ -19,6 +19,7 @@ import {
     changePrize,
     clearAll,
     removeRaffled,
+    initUsers,
 } from '../actions';
 
 
@@ -41,6 +42,10 @@ class Lottery extends Component {
             index,
             user: Object.assign(target, users[index]),
         };
+    }
+
+    componentWillMount() {
+        this.props.dispatch(initUsers());
     }
 
     componentDidMount() {

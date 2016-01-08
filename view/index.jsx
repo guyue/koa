@@ -17,12 +17,9 @@ import reducers from '../common/reducers';
 
 export default class Index extends Component {
 
-    renderLottery() {
+    renderLottery(state) {
 
-        const store = createStore(reducers, {
-            users: this.props.users,
-            prizes: this.props.prizes,
-        });
+        const store = createStore(reducers, state);
 
         return {
             __html: ReactDOMServer.renderToString(
@@ -35,11 +32,15 @@ export default class Index extends Component {
 
     render() {
 
+        const state = {
+            users: this.props.users,
+            prizes: this.props.prizes,
+        };
+
         return (
             <Layout title={this.props.title}>
-                <div id="app" dangerouslySetInnerHTML={this.renderLottery()} />
-                <script dangerouslySetInnerHTML={{__html: `window.users=${JSON.stringify(this.props.users)}`}}></script>
-                <script dangerouslySetInnerHTML={{__html: `window.prizes=${JSON.stringify(this.props.prizes)}`}}></script>
+                <div id="app" dangerouslySetInnerHTML={this.renderLottery(state)} />
+                <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(state)}`}}></script>
                 <script src="vendors.js"></script>
                 <script src="app.js"></script>
             </Layout>

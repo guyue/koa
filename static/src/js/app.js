@@ -11,16 +11,7 @@ import Lottery from '../../../common/container/lottery.jsx';
 import reducers from '../../../common/reducers';
 import storage from './storage.js';
 
-function initUsers() {
-    return window.users.map((user) => {
-        return [storage.get(user), user].reduce(Object.assign, {});
-    });
-}
-
-const store = createStore(reducers, {
-    users: initUsers(),
-    prizes: window.prizes,
-});
+const store = createStore(reducers, window.__INITIAL_STATE__);
 
 ReactDOM.render(<Provider store={store}>
     <Lottery />
