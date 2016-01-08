@@ -106,7 +106,7 @@ class Lottery extends Component {
                         this.props.dispatch(removeRaffled(user));
                     }}
                 />
-                <Flicker user={this.props.user} />
+                <Flicker user={this.props.displayUser} />
             </div>
         );
 
@@ -115,7 +115,7 @@ class Lottery extends Component {
 }
 
 Lottery.propTypes = {
-    user: PropTypes.shape({
+    displayUser: PropTypes.shape({
         department: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         phone: PropTypes.string.isRequired,
@@ -135,10 +135,26 @@ function raffled(users, rank) {
     return result;
 }
 
+function displayUser(users, index) {
+
+    if (index === -1) {
+        return {
+            department: '宝宝树',
+            name: '宝宝树',
+            phone: '12345678901',
+            image: 'img/logo.png',
+        };
+    }
+
+    return Object.assign({}, users[index]);
+
+}
+
 
 function select(state) {
     return Object.assign({
         raffled: raffled(state.users, state.rank),
+        displayUser: displayUser(state.users, state.displayUserIndex),
     }, state);
 }
 

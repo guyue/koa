@@ -13,17 +13,12 @@ function rank(state = {}, action) {
     return state;
 }
 
-function user(state = {
-            department: '宝宝树',
-            name: '宝宝树',
-            phone: '12345678901',
-            image: 'img/logo.png',
-        }, action) {
+function displayUserIndex(state = -1, action) {
 
     if (action.type === ActionConstants.GLANCE ||
             action.type === ActionConstants.RAFFLE) {
 
-        return Object.assign({}, action.user);
+        return action.index;
 
     }
 
@@ -71,8 +66,8 @@ function prize(state = [], action) {
 const reducers = combineReducers({
     rank,
     prize,
-    user,
     users,
+    displayUserIndex,
 });
 
 export default reducers;
