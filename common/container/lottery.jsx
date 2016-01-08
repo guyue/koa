@@ -76,9 +76,15 @@ class Lottery extends Component {
          *CTRL + 反单引号(1左侧) 重置
          */
         $(document).on('keydown.lottery', (e) => {
-            if (e.ctrlKey && e.keyCode == 192) {
-                // 192 = 反单引号(1左侧)
-                this.props.dispatch(clearAll());
+            if (e.ctrlKey) {
+                switch(e.keyCode) {
+                    case 192:
+                        this.props.dispatch(clearAll());
+                        break;
+                    case 13:
+                        document.body.webkitRequestFullScreen();
+                        break;
+                }
             }
         });
 
