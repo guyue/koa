@@ -57,11 +57,8 @@ class Lottery extends Component {
             //空格，上方向键，下方向键
             if ([32, 38, 40].indexOf(e.keyCode) >= 0) {
                 e.preventDefault();
-                const prize = this.props.selectedPrize;
-                const parallel = Math.min(
-                    prize.total - this.props.raffled.length,
-                    prize.parallel || 1
-                );
+                const parallel = this.props.parallel;
+
                 if (parallel === 0) {
                     return;
                 }
