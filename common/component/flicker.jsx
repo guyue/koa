@@ -10,12 +10,14 @@ export default class Flicker extends Component {
         const user = this.props.user;
 
         return (
-            <div>
-                <div className="flicker">
-                    <img src={user.image} />
-                </div>
-                <div className="name-container">
-                    {user.name}
+            <div className="flicker-container">
+                <div className="flicker-item">
+                    <div className="flicker-image">
+                        <img src={user.image} />
+                    </div>
+                    <div className="flicker-name">
+                        {user.name}
+                    </div>
                 </div>
             </div>
         );

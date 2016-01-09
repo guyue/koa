@@ -1,0 +1,54 @@
+// https://dev.opera.com/articles/advanced-cross-browser-flexbox/
+// https://css-tricks.com/using-flexbox/
+// https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+// http://the-echoplex.net/flexyboxes/
+#flex {
+    .display() {
+        display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+        display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+        display: -ms-flexbox; /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Chrome */
+        display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    }
+
+    .flex(@length: 1) {
+        -webkit-box-flex: @length; /* OLD - iOS 6-, Safari 3.1-6 */
+        -moz-box-flex: @length; /* OLD - Firefox 19- */
+        -webkit-flex: @length; /* Chrome */
+        -ms-flex: @length; /* IE 10 */
+        flex: @length; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    }
+
+    .align-items(@position: center) {
+        -webkit-box-align: @position;
+        -webkit-align-items: @position;
+        -moz-align-items: @position;
+        -ms-align-items: @position;
+        align-items: @position;
+    }
+
+    .justify-content(@position: center) {
+        -webkit-box-pack: @position;
+        -moz-box-pack: @position;
+        -ms-flex-pack: @position;
+        -webkit-justify-content: @position;
+        justify-content: @position;
+    }
+
+    .flex-direction-column() {
+        -moz-box-direction: normal;
+        -webkit-box-direction: normal;
+        -moz-box-orient: vertical;
+        -webkit-box-orient: vertical;
+        -ms-flexbox-direction: column;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .flex-wrap(@wrap: wrap) {
+        -webkit-flex-wrap: @wrap;
+        -ms-flex-wrap: @wrap;
+        flex-wrap: @wrap;
+    }
+}
