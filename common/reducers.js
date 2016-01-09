@@ -15,13 +15,19 @@ function selectedPrizeIndex(state = 0, action) {
     return state;
 }
 
-function displayUserIndex(state = -1, action) {
+function displayUserIndex(state = [-1], action) {
 
     if (action.type === ActionConstants.GLANCE ||
             action.type === ActionConstants.RAFFLE) {
 
-        return action.index;
+        return action.payload.map((message) => {
+            return message.index;
+        });
 
+    }
+
+    if (action.type === ActionConstants.CHANGE_PRIZE) {
+        return [-1];
     }
 
     return state;
@@ -54,15 +60,22 @@ function initUsers(users) {
 function users(state = [], action) {
     if (action.type === ActionConstants.INIT_USERS) {
         return initUsers(state);
-    } else if (action.type === ActionConstants.RAFFLE) {
-        return [
-            ...state.slice(0, action.index),
-            Object.assign({}, action.user),
-            ...state.slice(action.index + 1)
-        ];
-    } else if (action.type === ActionConstants.CLEAR_ALL) {
+    }
+    
+    if (action.type === ActionConstants.RAFFLE) {
+        let result = [...state];
+        action.payload.forEach((message) => {
+            const index = message.index;
+            result[index] = Object.assign({}, message.user);
+        });
+        return result;
+    }
+
+    if (action.type === ActionConstants.CLEAR_ALL) {
         return window.__INITIAL_STATE__.users;
-    } else if (action.type === ActionConstants.REMOVE_RAFFLED) {
+    }
+    
+    if (action.type === ActionConstants.REMOVE_RAFFLED) {
         const index = query(state, action.user);
 
         return [

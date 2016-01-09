@@ -57,16 +57,29 @@ class Lottery extends Component {
             //空格，上方向键，下方向键
             if ([32, 38, 40].indexOf(e.keyCode) >= 0) {
                 e.preventDefault();
-                if (this.props.raffled.length >= this.props.selectedPrize.total) {
+                const prize = this.props.selectedPrize;
+                const parallel = Math.min(
+                    prize.total - this.props.raffled.length,
+                    prize.parallel || 1
+                );
+                if (parallel === 0) {
                     return;
                 }
                 if (this.lock) {
                     this.timer = setInterval(() => {
-                        this.props.dispatch(glance(this.random()));
+                        const payload = [];
+                        for (let i = 0; i < parallel; i += 1) {
+                            payload.push(this.random());
+                        }
+                        this.props.dispatch(glance(payload));
                     }, 100);
                 } else {
                     clearInterval(this.timer);
-                    this.props.dispatch(raffle(this.random(true)));
+                    const payload = [];
+                    for (let i = 0; i < parallel; i += 1) {
+                        payload.push(this.random(true));
+                    }
+                    this.props.dispatch(raffle(payload));
                 }
                 this.lock = !this.lock;
             }
@@ -126,16 +139,17 @@ class Lottery extends Component {
 }
 
 Lottery.propTypes = {
-    displayUser: PropTypes.shape({
+    displayUser: PropTypes.arrayOf(PropTypes.shape({
         department: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         phone: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
-    }).isRequired,
+    }).isRequired).isRequired,
     selectedPrize: PropTypes.shape({
         key: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         total: PropTypes.number.isRequired,
+        parallel: PropTypes.number,
     }).isRequired,
     raffled: PropTypes.arrayOf(PropTypes.shape({
         department: PropTypes.string.isRequired,
@@ -146,7 +160,7 @@ Lottery.propTypes = {
     })),
 };
 
-function raffled(users, prize) {
+function raffledSelector(users, prize) {
     const result = [];
 
     users.forEach(function (user) {
@@ -158,32 +172,49 @@ function raffled(users, prize) {
     return result;
 }
 
-function displayUser(users, index) {
-
-    if (index === -1) {
-        return {
-            department: '宝宝树',
-            name: '宝宝树',
-            phone: '12345678901',
-            image: 'img/logo.png',
-        };
-    }
-
-    return Object.assign({}, users[index]);
-
+function parallelSelector(prize, raffled) {
+    return Math.min(
+        prize.total - raffled.length,
+        prize.parallel || 1
+    );
 }
 
-function selectedPrize(prizes, index) {
+function displayUserSelector(users, index, parallel) {
+
+    parallel = parallel || 1;
+
+    if (index.length === 1 && index[0] === -1) {
+        const result = [];
+        for (let i = 0; i < parallel; i += 1) {
+            result.push({
+                department: '宝宝树',
+                name: '宝宝树',
+                phone: '12345678901',
+                image: 'img/logo.png',
+            });
+        }
+        return result;
+    }
+
+    return index.map((i) => {
+        return Object.assign({}, users[i]);
+    });
+}
+
+function selectedPrizeSelector(prizes, index) {
     return Object.assign({}, prizes[index]);
 }
 
 
 function select(state) {
-    const prize = selectedPrize(state.prizes, state.selectedPrizeIndex);
+    const selectedPrize = selectedPrizeSelector(state.prizes, state.selectedPrizeIndex);
+    const raffled = raffledSelector(state.users, selectedPrize);
+    const parallel = parallelSelector(selectedPrize, raffled);
     return Object.assign({
-        raffled: raffled(state.users, prize),
-        displayUser: displayUser(state.users, state.displayUserIndex),
-        selectedPrize: prize,
+        selectedPrize,
+        raffled,
+        parallel,
+        displayUser: displayUserSelector(state.users, state.displayUserIndex, parallel),
     }, state);
 }
 

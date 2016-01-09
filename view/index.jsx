@@ -62,5 +62,6 @@ Index.propTypes = {
         key: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         total: PropTypes.number.isRequired,
+        parallel: PropTypes.number,
     }).isRequired).isRequired,
 };

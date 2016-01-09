@@ -7,18 +7,22 @@ export default class Flicker extends Component {
 
     render() {
 
-        const user = this.props.user;
+        const users = this.props.user;
 
         return (
             <div className="flicker-container">
-                <div className="flicker-item">
-                    <div className="flicker-image">
-                        <img src={user.image} />
-                    </div>
-                    <div className="flicker-name">
-                        {user.name}
-                    </div>
-                </div>
+                {users.map((user, index) => {
+                    return (
+                        <div key={index} className="flicker-item">
+                            <div className="flicker-image">
+                                <img src={user.image} />
+                            </div>
+                            <div className="flicker-name">
+                                {user.name}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         );
 
@@ -27,10 +31,10 @@ export default class Flicker extends Component {
 }
 
 Flicker.propTypes = {
-    user: PropTypes.shape({
+    user: PropTypes.arrayOf(PropTypes.shape({
         department: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         phone: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
-    }).isRequired,
+    }).isRequired).isRequired,
 };

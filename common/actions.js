@@ -4,17 +4,21 @@ import {
 
 import storage from '../static/src/js/storage.js';
 
-export function glance(message) {
-    return Object.assign({
+export function glance(payload) {
+    return {
         type: ActionConstants.GLANCE,
-    }, message);
+        payload,
+    };
 }
 
-export function raffle(message) {
-    storage.append(message.user);
-    return Object.assign({
+export function raffle(payload) {
+    payload.forEach((message) => {
+        storage.append(message.user);
+    });
+    return {
         type: ActionConstants.RAFFLE,
-    }, message);
+        payload,
+    };
 }
 
 export function changePrize(index) {
