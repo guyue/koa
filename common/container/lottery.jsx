@@ -127,7 +127,7 @@ class Lottery extends Component {
                         this.props.dispatch(removeRaffled(user));
                     }}
                 />
-                <Flicker user={this.props.displayUsers} />
+                <Flicker users={this.props.displayUsers} />
             </div>
         );
 
