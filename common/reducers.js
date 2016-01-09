@@ -15,7 +15,7 @@ function selectedPrizeIndex(state = 0, action) {
     return state;
 }
 
-function displayUserIndex(state = [-1], action) {
+function displayUserIndexes(state = [-1], action) {
 
     if (action.type === ActionConstants.GLANCE ||
             action.type === ActionConstants.RAFFLE) {
@@ -95,7 +95,7 @@ const reducers = combineReducers({
     prizes,
     selectedPrizeIndex,
     users,
-    displayUserIndex,
+    displayUserIndexes,
 });
 
 export default reducers;

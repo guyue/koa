@@ -130,7 +130,7 @@ class Lottery extends Component {
                         this.props.dispatch(removeRaffled(user));
                     }}
                 />
-                <Flicker user={this.props.displayUser} />
+                <Flicker user={this.props.displayUsers} />
             </div>
         );
 
@@ -139,7 +139,7 @@ class Lottery extends Component {
 }
 
 Lottery.propTypes = {
-    displayUser: PropTypes.arrayOf(PropTypes.shape({
+    displayUsers: PropTypes.arrayOf(PropTypes.shape({
         department: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         phone: PropTypes.string.isRequired,
@@ -179,7 +179,7 @@ function parallelSelector(prize, raffled) {
     );
 }
 
-function displayUserSelector(users, index, parallel) {
+function displayUsersSelector(users, index, parallel) {
 
     parallel = parallel || 1;
 
@@ -214,7 +214,7 @@ function select(state) {
         selectedPrize,
         raffled,
         parallel,
-        displayUser: displayUserSelector(state.users, state.displayUserIndex, parallel),
+        displayUsers: displayUsersSelector(state.users, state.displayUserIndexes, parallel),
     }, state);
 }
 
