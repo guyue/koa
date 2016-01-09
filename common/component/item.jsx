@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React, {
     Component,
     PropTypes,
 } from 'react';
+/* eslint-enable no-unused-vars */
 
 export default class Item extends Component {
 
     render() {
         const user = this.props.user;
+
         return (
             <li>
                 <div className="avatar"><img width="34" src={user.image} /></div>
@@ -16,6 +19,7 @@ export default class Item extends Component {
                     title="删除"
                     onClick={() => {
                         const action = Object.assign({}, user);
+
                         Reflect.deleteProperty(action, 'prize');
                         this.props.removeRaffled(action);
                     }}
@@ -25,3 +29,13 @@ export default class Item extends Component {
     }
 
 }
+
+Item.propTypes = {
+    user: PropTypes.shape({
+        department: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+    }).isRequired,
+    removeRaffled: PropTypes.func.isRequired,
+};
