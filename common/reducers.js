@@ -15,28 +15,31 @@ function selectedPrizeIndex(state = 0, action) {
     return state;
 }
 
-function displayUserIndexes(state = [-1], action) {
+const INIT_USER_INDEX = -1;
+const INIT_USER_STATE = [
+    INIT_USER_INDEX,
+];
+
+function displayUserIndexes(state = INIT_USER_STATE, action) {
 
     if (action.type === ActionConstants.GLANCE ||
             action.type === ActionConstants.RAFFLE) {
 
-        return action.payload.map((message) => {
-            return message.index;
-        });
+        return action.payload.map((message) => (message.index));
 
     }
 
     if (action.type === ActionConstants.CHANGE_PRIZE) {
-        return [-1];
+        return INIT_USER_STATE;
     }
 
     return state;
 
 }
 
-function query(users, user) {
+function query(stateUsers, user) {
 
-    return users.findIndex(function (value) {
+    return stateUsers.findIndex((value) => {
         if (user.department === value.department &&
                 user.name === value.name &&
                 user.phone === value.phone) {
@@ -47,13 +50,12 @@ function query(users, user) {
 
 }
 
-function initUsers(users) {
+function initUsers(stateUsers) {
     if (typeof window !== 'object') {
-        return users;
+        return stateUsers;
     }
-    return users.map((user) => {
-        return Object.assign({}, storage.get(user), user);
-    });
+
+    return stateUsers.map((user) => (Object.assign({}, storage.get(user), user)));
 }
 
 
@@ -61,33 +63,39 @@ function users(state = [], action) {
     if (action.type === ActionConstants.INIT_USERS) {
         return initUsers(state);
     }
-    
+
     if (action.type === ActionConstants.RAFFLE) {
-        let result = [...state];
+        const result = [
+            ...state,
+        ];
+
         action.payload.forEach((message) => {
             const index = message.index;
+
             result[index] = Object.assign({}, message.user);
         });
         return result;
     }
 
     if (action.type === ActionConstants.CLEAR_ALL) {
+        /* eslint-disable no-underscore-dangle */
         return window.__INITIAL_STATE__.users;
+        /* eslint-enable no-underscore-dangle */
     }
-    
+
     if (action.type === ActionConstants.REMOVE_RAFFLED) {
         const index = query(state, action.user);
 
         return [
             ...state.slice(0, index),
             Object.assign({}, action.user),
-            ...state.slice(index + 1)
+            ...state.slice(index + 1),
         ];
     }
     return state;
 }
 
-function prizes(state = [], action) {
+function prizes(state = []) {
     return state;
 }
 
