@@ -8,6 +8,12 @@ import {
 
 import storage from '../static/src/js/storage.js';
 
+/**
+ * 现抽奖奖项索引
+ * @param {Number} state 前抽奖奖项索引
+ * @param {Object} action
+ * @return {Number} 现抽奖奖项索引
+ */
 function selectedPrizeIndex(state = 0, action) {
     if (action.type === ActionConstants.CHANGE_PRIZE) {
         return action.index;
@@ -20,6 +26,12 @@ const INIT_USER_STATE = [
     INIT_USER_INDEX,
 ];
 
+/**
+ * 现摇奖界面显示用户索引列表
+ * @param {Array} state 前摇奖界面显示用户索引列表
+ * @param {Object} action
+ * @return {Array} 现摇奖界面显示用户索引列表
+ */
 function displayUserIndexes(state = INIT_USER_STATE, action) {
 
     if (action.type === ActionConstants.GLANCE ||
@@ -37,6 +49,12 @@ function displayUserIndexes(state = INIT_USER_STATE, action) {
 
 }
 
+/**
+ * 指定用户在stateUsers中的索引值
+ * @param {Array} stateUsers state中用户列表
+ * @param {Object} user
+ * @return {Number} 指定用户在stateUsers中的索引值
+ */
 function query(stateUsers, user) {
 
     return stateUsers.findIndex((value) => {
@@ -50,6 +68,11 @@ function query(stateUsers, user) {
 
 }
 
+/**
+ * stateUsers初始化
+ * @param {Array} stateUsers state中用户列表
+ * @return {Array} 用本地数据对stateUsers进行初始化
+ */
 function initUsers(stateUsers) {
     if (typeof window !== 'object') {
         return stateUsers;
@@ -59,6 +82,12 @@ function initUsers(stateUsers) {
 }
 
 
+/**
+ * 现用户列表
+ * @param {Array} state 前用户列表
+ * @param {Object} action
+ * @return {Array} 现用户列表
+ */
 function users(state = [], action) {
     if (action.type === ActionConstants.INIT_USERS) {
         return initUsers(state);
@@ -95,6 +124,11 @@ function users(state = [], action) {
     return state;
 }
 
+/**
+ * 现奖项列表
+ * @param {Array} state 前奖项列表
+ * @return {Array} 现奖项列表
+ */
 function prizes(state = []) {
     return state;
 }
