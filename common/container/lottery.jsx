@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, {
     Component,
     PropTypes,
 } from 'react';
+/* eslint-enable no-unused-vars */
 
 import {
     connect,
@@ -27,7 +29,7 @@ class Lottery extends Component {
 
     random(skipIsRaffled, willDisplayUsers) {
         const users = this.props.users;
-        const index = Math.random() * users.length >>> 0;
+        const index = Math.floor(Math.random() * users.length);
         const target = {};
 
         if (skipIsRaffled) {
@@ -52,51 +54,84 @@ class Lottery extends Component {
         this.props.dispatch(initUsers());
     }
 
+    glance() {
+        const INTERVAL = 120;
+
+        this.timer = setInterval(() => {
+            const parallel = this.props.parallel;
+            const payload = [];
+
+            for (let i = 0; i < parallel; i += 1) {
+                payload.push(this.random(false, payload));
+            }
+
+            this.props.dispatch(glance(payload));
+        }, INTERVAL);
+    }
+
+    raffle() {
+        clearInterval(this.timer);
+        const parallel = this.props.parallel;
+        const payload = [];
+
+        for (let i = 0; i < parallel; i += 1) {
+            payload.push(this.random(true, payload));
+        }
+        this.props.dispatch(raffle(payload));
+    }
+
     componentDidMount() {
 
         this.lock = true;
         this.timer = null;
 
         $(document).on('keydown.lottery', (e) => {
-            //空格，上方向键，下方向键
-            if ([32, 38, 40].indexOf(e.keyCode) >= 0) {
-                e.preventDefault();
-                const parallel = this.props.parallel;
+            const SPACE_KEY_CODE = 32;
+            const ARROW_UP_KEY_CODE = 38;
+            const ARROW_DOWN_KEY_CODE = 40;
+            const NO_EXIST = -1;
+            const KEY_CODES = [
+                SPACE_KEY_CODE,
+                ARROW_UP_KEY_CODE,
+                ARROW_DOWN_KEY_CODE,
+            ];
 
-                if (parallel === 0) {
-                    return;
-                }
-                if (this.lock) {
-                    this.timer = setInterval(() => {
-                        const payload = [];
-                        for (let i = 0; i < parallel; i += 1) {
-                            payload.push(this.random(false, payload));
-                        }
-                        this.props.dispatch(glance(payload));
-                    }, 120);
-                } else {
-                    clearInterval(this.timer);
-                    const payload = [];
-                    for (let i = 0; i < parallel; i += 1) {
-                        payload.push(this.random(true, payload));
-                    }
-                    this.props.dispatch(raffle(payload));
-                }
-                this.lock = !this.lock;
+            if (KEY_CODES.indexOf(e.keyCode) === NO_EXIST) {
+                return;
             }
+
+            e.preventDefault();
+            const parallel = this.props.parallel;
+
+            if (parallel === 0) {
+                return;
+            }
+
+            if (this.lock) {
+                this.glance();
+            } else {
+                this.raffle();
+            }
+
+            this.lock = !this.lock;
         });
 
         /*
          *CTRL + 反单引号(1左侧) 重置
          */
         $(document).on('keydown.lottery', (e) => {
+            const BACK_TICK_KEY_CODE = 192;
+            const ENTER_KEY_CODE = 13;
+
             if (e.ctrlKey) {
-                switch(e.keyCode) {
-                    case 192:
+                switch (e.keyCode) {
+                    case BACK_TICK_KEY_CODE:
                         this.props.dispatch(clearAll());
                         break;
-                    case 13:
+                    case ENTER_KEY_CODE:
                         document.body.webkitRequestFullScreen();
+                        break;
+                    default:
                         break;
                 }
             }
@@ -164,7 +199,7 @@ Lottery.propTypes = {
 function raffledSelector(users, prize) {
     const result = [];
 
-    users.forEach(function (user) {
+    users.forEach((user) => {
         if (user.prize === prize.key) {
             result.push(user);
         }
@@ -182,10 +217,13 @@ function parallelSelector(prize, raffled) {
 
 function displayUsersSelector(users, index, parallel) {
 
+    const INIT_CODE = -1;
+
     parallel = parallel || 1;
 
-    if (index.length === 1 && index[0] === -1) {
+    if (index.length === 1 && index[0] === INIT_CODE) {
         const result = [];
+
         for (let i = 0; i < parallel; i += 1) {
             result.push({
                 department: '宝宝树',
@@ -197,9 +235,7 @@ function displayUsersSelector(users, index, parallel) {
         return result;
     }
 
-    return index.map((i) => {
-        return Object.assign({}, users[i]);
-    });
+    return index.map((i) => (Object.assign({}, users[i])));
 }
 
 function selectedPrizeSelector(prizes, index) {
@@ -211,6 +247,7 @@ function select(state) {
     const selectedPrize = selectedPrizeSelector(state.prizes, state.selectedPrizeIndex);
     const raffled = raffledSelector(state.users, selectedPrize);
     const parallel = parallelSelector(selectedPrize, raffled);
+
     return Object.assign({
         selectedPrize,
         raffled,
