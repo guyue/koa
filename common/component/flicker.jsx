@@ -15,8 +15,9 @@ export default class Flicker extends Component {
             <div className="flicker-container">
                 {users.map((user, index) => (
                     <div key={index} className="flicker-item">
-                        <div className="flicker-image">
-                            <img src={user.image} />
+                        <div className="flicker-image" style={{
+                            backgroundImage: `url(${user.image})`,
+                        }}>
                         </div>
                         <div className="flicker-name">
                             {user.name}
