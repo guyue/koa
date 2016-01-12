@@ -12,7 +12,9 @@ export default class Item extends Component {
 
         return (
             <li>
-                <div className="avatar"><img width="34" src={user.image} /></div>
+                <div className="avatar" style={{
+                    backgroundImage: `url(${user.image})`,
+                }}></div>
                 <div className="name">{user.name} ({user.department}-{user.phone})</div>
                 <button
                     className="icon-delete"
