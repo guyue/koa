@@ -196,6 +196,12 @@ Lottery.propTypes = {
     })),
 };
 
+/**
+ * 获取当前奖项的中奖用户列表
+ * @param {Array} users 所用用户列表
+ * @param {Object} prize 当前奖项对象
+ * @return {Array} 当前奖项的中奖用户列表
+ */
 function raffledSelector(users, prize) {
     const result = [];
 
@@ -208,6 +214,12 @@ function raffledSelector(users, prize) {
     return result;
 }
 
+/**
+ * 获取当前奖项的抽奖中并行数量
+ * @param {Object} prize 当前奖项对象
+ * @param {Array} raffled 当前奖项的中奖用户列表
+ * @return {Number} 当前奖项的抽奖中并行数量
+ */
 function parallelSelector(prize, raffled) {
     return Math.min(
         prize.total - raffled.length,
@@ -215,6 +227,13 @@ function parallelSelector(prize, raffled) {
     );
 }
 
+/**
+ * 获取摇奖器要显示的用户列表
+ * @param {Array} users 所用用户列表
+ * @param {Array} index 要显示的用户索引列表
+ * @param {Number} parallel 当前奖项的抽奖中并行数量
+ * @return {Array} 摇奖器要显示的用户列表
+ */
 function displayUsersSelector(users, index, parallel) {
 
     const INIT_CODE = -1;
@@ -238,11 +257,22 @@ function displayUsersSelector(users, index, parallel) {
     return index.map((i) => (Object.assign({}, users[i])));
 }
 
+/**
+ * 获取当前要抽取的奖项信息
+ * @param {Array} prizes 奖项的列表
+ * @param {Number} index 当前要抽取的奖项的索引
+ * @return {Object} 当前要抽取的奖项
+ */
 function selectedPrizeSelector(prizes, index) {
     return Object.assign({}, prizes[index]);
 }
 
 
+/**
+ * 获取填充props的对象
+ * @param {Object} state redux自动填充的原始state
+ * @return {Object} 填充props的对象
+ */
 function select(state) {
     const selectedPrize = selectedPrizeSelector(state.prizes, state.selectedPrizeIndex);
     const raffled = raffledSelector(state.users, selectedPrize);
