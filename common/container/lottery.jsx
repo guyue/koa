@@ -73,7 +73,7 @@ class Lottery extends Component {
                             payload.push(this.random(false, payload));
                         }
                         this.props.dispatch(glance(payload));
-                    }, 100);
+                    }, 120);
                 } else {
                     clearInterval(this.timer);
                     const payload = [];
