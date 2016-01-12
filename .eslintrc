@@ -143,7 +143,7 @@
             {
                 "min": 2,
                 "max": 30,
-                "exceptions": ["e", "i", "j"]
+                "exceptions": ["$", "e", "i", "j"]
             }
         ],
         "indent": [
