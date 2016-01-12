@@ -2,7 +2,7 @@ module.exports = [{
         key: 'grateful',
         name: '感恩奖',
         total: 100,
-        parallel: 8,
+        parallel: 10,
     }, {
         key: 'fifth',
         name: '五等奖',
