@@ -25,7 +25,7 @@ import {
 
 class Lottery extends Component {
 
-    random(skipIsRaffled) {
+    random(skipIsRaffled, willDisplayUsers) {
         const users = this.props.users;
         const index = Math.random() * users.length >>> 0;
         const target = {};
@@ -35,7 +35,11 @@ class Lottery extends Component {
         }
 
         if (skipIsRaffled && users[index].prize) {
-            return this.random(skipIsRaffled);
+            return this.random(skipIsRaffled, willDisplayUsers);
+        }
+
+        if (willDisplayUsers.find((user) => (user.index === index))) {
+            return this.random(skipIsRaffled, willDisplayUsers);
         }
 
         return {
@@ -66,7 +70,7 @@ class Lottery extends Component {
                     this.timer = setInterval(() => {
                         const payload = [];
                         for (let i = 0; i < parallel; i += 1) {
-                            payload.push(this.random());
+                            payload.push(this.random(false, payload));
                         }
                         this.props.dispatch(glance(payload));
                     }, 100);
@@ -74,7 +78,7 @@ class Lottery extends Component {
                     clearInterval(this.timer);
                     const payload = [];
                     for (let i = 0; i < parallel; i += 1) {
-                        payload.push(this.random(true));
+                        payload.push(this.random(true, payload));
                     }
                     this.props.dispatch(raffle(payload));
                 }
