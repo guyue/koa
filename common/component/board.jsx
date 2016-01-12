@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, {
     Component,
     PropTypes,
 } from 'react';
+/* eslint-enable no-unused-vars */
 
 import classnames from 'classnames';
 
@@ -35,18 +37,16 @@ export default class Board extends Component {
                         {this.props.prize.name}
                     </h1>
                     <fieldset>
-                        {this.props.prizes.map((p, index) => {
-                            return (
-                                <button
-                                    key={p.key}
-                                    className={p.key}
-                                    title={p.name}
-                                    onClick={() => {
-                                        this.props.changePrize(index);
-                                    }}
-                                />
-                            );
-                        })}
+                        {this.props.prizes.map((prize, index) => (
+                            <button
+                                key={prize.key}
+                                className={prize.key}
+                                title={prize.name}
+                                onClick={() => {
+                                    this.props.changePrize(index);
+                                }}
+                            />
+                        ))}
                     </fieldset>
                     <List
                         prize={this.props.prize}
