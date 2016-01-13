@@ -14,7 +14,7 @@ module.exports = {
     getUsers: function *() {
         let avatars = yield getAvatars();
         avatars = avatars.filter((avatar) => {
-            if (!/^.+\-.+\-\d{11}\.(?:jpg|jpeg|png)$/i.test(avatar)) {
+            if (!/^[^-]+\-[^-]+\-\d{11}\.(?:jpg|jpeg|png)$/i.test(avatar)) {
                 console.log('错误图片：', avatar);
                 return false;
             }
