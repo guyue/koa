@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 
@@ -10,7 +12,14 @@ function getAvatars() {
 
 module.exports = {
     getUsers: function *() {
-        const avatars = yield getAvatars();
+        let avatars = yield getAvatars();
+        avatars = avatars.filter((avatar) => {
+            if (!/^.+\-.+\-\d{11}\.(?:jpg|jpeg|png)$/i) {
+                console.log('错误图片：', avatar);
+                return false;
+            }
+            return true;
+        });
         const users = avatars.map(function (avatar) {
             const parts = avatar.split(/-|\./);
             return {
