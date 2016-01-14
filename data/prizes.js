@@ -1,6 +1,6 @@
 module.exports = [{
         key: 'grateful',
-        name: '感恩奖',
+        name: '六等奖',
         total: 100,
         parallel: 10,
     }, {
