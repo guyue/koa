@@ -175,6 +175,12 @@ class Lottery extends Component {
 }
 
 Lottery.propTypes = {
+    users: PropTypes.arrayOf(PropTypes.shape({
+        department: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+    }).isRequired).isRequired,
     displayUsers: PropTypes.arrayOf(PropTypes.shape({
         department: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
