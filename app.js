@@ -70,6 +70,8 @@ const router = require('koa-router')();
 
 const indexRouter = require('./router/index');
 router.use('/', indexRouter.routes());
+const userRouter = require('./router/user');
+router.use('/user', userRouter.routes());
 
 app.use(router.routes());
 
