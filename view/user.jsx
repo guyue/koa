@@ -12,7 +12,7 @@ export default class User extends Component {
 
         return (
             <Layout title={this.props.title}>
-                <link rel="stylesheet" href="less/user.css" />
+                <link rel="stylesheet" href="/less/user.css" />
                 <div className="container">
                     <table className="table table-bordered table-hover">
                         <caption>{this.props.title}</caption>
@@ -31,7 +31,14 @@ export default class User extends Component {
                                         <td>{index + 1}</td>
                                         <td>{user.department}</td>
                                         <td>
-                                            <a href={user.image} target="_blank"><img src={user.image} className="img-thumbnail" /></a>
+                                            <a
+                                                href={user.image}
+                                                target="_blank"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                            >
+                                                    <img src={user.image} className="img-thumbnail" />
+                                            </a>
                                             {user.name}
                                         </td>
                                         <td>{user.phone}</td>
@@ -41,6 +48,9 @@ export default class User extends Component {
                         </tbody>
                     </table>
                 </div>
+                <script src="/lib/jquery.js"></script>
+                <script src="/lib/bootstrap.js"></script>
+                <script src="/js/user.js"></script>
             </Layout>
         );
 
