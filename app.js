@@ -74,6 +74,8 @@ const indexRouter = require('./router/index');
 router.use('/', indexRouter.routes());
 const userRouter = require('./router/user');
 router.use('/user', userRouter.routes());
+const h2Router = require('./router/h2');
+router.use('/h2', h2Router.routes());
 
 app.use(router.routes());
 
