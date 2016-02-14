@@ -1,3 +1,3 @@
-# koa
+# TESTUDY
 
-基于 React 的抽奖小程序
+test + study = testudy
