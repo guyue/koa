@@ -17,6 +17,8 @@ export default class User extends Component {
                     <dd>{String(this.props.isSpdy)}</dd>
                     <dt>spdyVersion</dt>
                     <dd>{String(this.props.spdyVersion)}</dd>
+                    <dt>ua</dt>
+                    <dd>{this.props.ua}</dd>
                 </dl>
             </Layout>
         );
