@@ -34,6 +34,7 @@
     "normalize.css": "^3.0.3",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-router": "^2.0.0",
     "spdy": "^3.2.0",
     "validator": "^4.4.0"
   },
@@ -60,7 +61,6 @@
     "postcss-loader": "^0.8.0",
     "react-addons-linked-state-mixin": "^0.14.5",
     "react-redux": "^4.0.6",
-    "react-router": "^1.0.3",
     "react-tap-event-plugin": "^0.2.1",
     "redux": "^3.0.5",
     "style-loader": "^0.13.0",
