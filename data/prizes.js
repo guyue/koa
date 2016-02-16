@@ -1,22 +1,22 @@
 module.exports = [{
         key: 'grateful',
         name: '六等奖',
-        total: 100,
-        parallel: 10,
+        total: 10,
+        parallel: 5,
     }, {
         key: 'fifth',
         name: '五等奖',
-        total: 30,
-        parallel: 6,
+        total: 3,
+        parallel: 2,
     }, {
         key: 'fourth',
         name: '四等奖',
-        total: 15,
-        parallel: 5,
+        total: 3,
+        parallel: 2,
     }, {
         key: 'third',
         name: '三等奖',
-        total: 5,
+        total: 2,
     }, {
         key: 'second',
         name: '二等奖',
