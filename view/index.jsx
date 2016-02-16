@@ -5,6 +5,7 @@ import React, {
 import ReactDOMServer from 'react-dom/server';
 import {
     createStore,
+    combineReducers,
 } from 'redux';
 import {
     Provider,
@@ -19,7 +20,7 @@ export default class Index extends Component {
 
     renderLottery(state) {
 
-        const store = createStore(reducers, state);
+        const store = createStore(combineReducers(reducers), state);
 
         return {
             __html: ReactDOMServer.renderToString(

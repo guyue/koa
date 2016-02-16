@@ -1,8 +1,4 @@
 import {
-    combineReducers,
-} from 'redux';
-
-import {
     ActionConstants,
 } from './constants';
 
@@ -133,11 +129,11 @@ function prizes(state = []) {
     return state;
 }
 
-const reducers = combineReducers({
+const reducers = {
     prizes,
     selectedPrizeIndex,
     users,
     displayUserIndexes,
-});
+};
 
 export default reducers;
