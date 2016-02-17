@@ -5,6 +5,10 @@ import React, {
 } from 'react';
 /* eslint-enable no-unused-vars */
 
+import {
+    Link,
+} from 'react-router';
+
 import classnames from 'classnames';
 
 import List from './list.jsx';
@@ -53,6 +57,7 @@ export default class Board extends Component {
                         removeRaffled={this.props.removeRaffled}
                         raffled={this.props.raffled}
                     />
+                    <Link to="/user">User</Link>
                 </div>
             </aside>
         );

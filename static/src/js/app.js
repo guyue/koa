@@ -21,6 +21,7 @@ import {
 } from 'react-router-redux';
 
 import Lottery from '../../../common/container/lottery.jsx';
+import User from '../../../common/container/user.jsx';
 import reducers from '../../../common/reducers';
 
 const reducer = combineReducers(Object.assign({}, reducers, {
@@ -38,5 +39,6 @@ reduxRouterMiddleware.listenForReplays(store);
 ReactDOM.render(<Provider store={store}>
     <Router history={browserHistory}>
         <Route path="/" component={Lottery} />
+        <Route path="/user" component={User} />
     </Router>
 </Provider>, document.querySelector('#app'));
