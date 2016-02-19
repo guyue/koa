@@ -13,8 +13,37 @@ import {
     connect,
 } from 'react-redux';
 
+import $ from 'jquery';
+
 
 export default class User extends Component {
+
+    componentDidMount() {
+
+        $('a[data-toggle="tooltip"]').click((e) => {
+            e.preventDefault();
+        });
+        /* tooltip 方法尚未实现
+        .tooltip({
+            trigger: 'hover',
+            placement: 'auto',
+            html: true,
+            title() {
+
+                return $($(this).html()).attr('class', 'img-rounded');
+
+            },
+        });
+        */
+
+    }
+
+    componentWillUnmount() {
+
+        $('a[data-toggle="tooltip"]').off('click');
+        // .tooltip('destroy');
+
+    }
 
     render() {
 
