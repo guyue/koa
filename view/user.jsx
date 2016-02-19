@@ -2,6 +2,7 @@ import React, {
     Component,
     PropTypes,
 } from 'react';
+import ReactDOMServer from 'react-dom/server';
 
 import {
     createStore,
@@ -18,6 +19,19 @@ import reducers from '../common/reducers';
 
 export default class Index extends Component {
 
+    renderUser(state) {
+
+        const store = createStore(combineReducers(reducers), state);
+
+        return {
+            __html: ReactDOMServer.renderToString(
+                <Provider store={store}>
+                    <User />
+                </Provider>
+            ),
+        };
+    }
+
     render() {
 
         const state = {
@@ -29,12 +43,10 @@ export default class Index extends Component {
 
         return (
             <Layout title={this.props.title}>
-                <Provider store={store}>
-                    <User />
-                </Provider>
-                <script src="/lib/jquery.js"></script>
-                <script src="/lib/bootstrap.js"></script>
-                <script src="/js/user.js"></script>
+                <div id="app" dangerouslySetInnerHTML={this.renderUser(state)} />
+                <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(state)}`}}></script>
+                <script src="vendors.js"></script>
+                <script src="app.js"></script>
             </Layout>
         );
 
