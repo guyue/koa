@@ -15,9 +15,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-plugin-syntax-async-functions": "^6.5.0",
+    "babel-polyfill": "^6.5.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
-    "babel-register": "^6.3.13",
+    "babel-register": "^6.5.2",
     "bootstrap": "^3.3.6",
     "goratchet": "^2.0.2",
     "jquery": "^2.1.4",

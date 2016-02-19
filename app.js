@@ -49,6 +49,7 @@ const register = require('babel-register');
 register({
     only: [
         config.viewDir,
+        config.controllerDir,
         config.commonDir,
         config.staticDir,
     ],
