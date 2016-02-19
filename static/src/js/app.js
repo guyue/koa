@@ -11,6 +11,7 @@ import {
     Provider,
 } from 'react-redux';
 import {
+    Router,
     browserHistory,
 } from 'react-router';
 import {
@@ -19,7 +20,7 @@ import {
 } from 'react-router-redux';
 
 import reducers from '../../../common/reducers';
-import Routes from '../../../common/routes.jsx';
+import routes from '../../../common/routes.jsx';
 
 const reducer = combineReducers(Object.assign({}, reducers, {
     routing: routeReducer,
@@ -34,5 +35,7 @@ const store = createStoreWithMiddleware(reducer, window.__INITIAL_STATE__);
 reduxRouterMiddleware.listenForReplays(store);
 
 ReactDOM.render(<Provider store={store}>
-    <Routes history={browserHistory} />
+    <Router history={browserHistory}>
+        {routes}
+    </Router>
 </Provider>, document.querySelector('#app'));
