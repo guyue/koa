@@ -10,4 +10,13 @@ module.exports = {
             csrf: this.csrf,
         });
     },
+
+    user: function *() {
+        const users = yield storage.getUsers();
+        this.render('user', {
+            title: '参加抽奖名单',
+            users: users,
+            csrf: this.csrf,
+        });
+    },
 };
