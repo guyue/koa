@@ -1,4 +1,3 @@
-require('babel-polyfill');
 const storage = require('../util/storage');
 import React from 'react';
 import routes from '../common/routes.jsx';

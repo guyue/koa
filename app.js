@@ -1,4 +1,5 @@
 'use strict';
+require('babel-polyfill');
 
 const path = require('path');
 const  spdy = require('spdy');
@@ -71,10 +72,10 @@ app.use(csrf.middleware);
 
 const router = require('koa-router')();
 
-const indexRouter = require('./router/index');
-router.use('/', indexRouter.routes());
 const h2Router = require('./router/h2');
 router.use('/h2', h2Router.routes());
+const indexRouter = require('./router/index');
+router.use('/*', indexRouter.routes());
 
 app.use(router.routes());
 
