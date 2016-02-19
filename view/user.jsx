@@ -3,7 +3,6 @@ import React, {
     PropTypes,
 } from 'react';
 import ReactDOMServer from 'react-dom/server';
-
 import {
     createStore,
     combineReducers,
@@ -38,8 +37,6 @@ export default class Index extends Component {
             users: this.props.users,
             prizes: this.props.prizes,
         };
-
-        const store = createStore(combineReducers(reducers), state);
 
         return (
             <Layout title={this.props.title}>
