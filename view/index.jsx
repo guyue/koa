@@ -22,13 +22,11 @@ export default class Index extends Component {
 
         const store = createStore(combineReducers(reducers), state);
 
-        return {
-            __html: ReactDOMServer.renderToString(
-                <Provider store={store}>
-                    <Lottery />
-                </Provider>
-            ),
-        };
+        return ReactDOMServer.renderToString(
+            <Provider store={store}>
+                <Lottery />
+            </Provider>
+        );
     }
 
     render() {
@@ -38,9 +36,11 @@ export default class Index extends Component {
             prizes: this.props.prizes,
         };
 
+        const html = this.renderLottery(state, this.props.url);
+
         return (
             <Layout title={this.props.title}>
-                <div id="app" dangerouslySetInnerHTML={this.renderLottery(state)} />
+                <div id="app" dangerouslySetInnerHTML={{__html: html}} />
                 <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(state)}`}}></script>
                 <script src="vendors.js"></script>
                 <script src="app.js"></script>
