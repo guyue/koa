@@ -10,7 +10,7 @@ const config = require('./config/config');
 
 
 const app = koa();
-app.keys = ['study koa'];
+app.keys = ['testudy'];
 
 
 const compress = require('koa-compress');
