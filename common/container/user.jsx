@@ -54,7 +54,6 @@ export default class User extends Component {
                     <table className="table table-bordered table-hover">
                         <caption>
                             {this.props.title}
-                            <Link to="/">Lottery</Link>
                         </caption>
                         <thead>
                             <tr>
@@ -84,6 +83,7 @@ export default class User extends Component {
                             ))}
                         </tbody>
                     </table>
+                    <Link to="/">返回Lottery</Link>
                 </div>
             </div>
         );

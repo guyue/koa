@@ -57,7 +57,7 @@ export default class Board extends Component {
                         removeRaffled={this.props.removeRaffled}
                         raffled={this.props.raffled}
                     />
-                    <Link to="/user">User</Link>
+                    <Link to="/user" className="link">User</Link>
                 </div>
             </aside>
         );
