@@ -22,7 +22,7 @@ import {
     clearAll,
     removeRaffled,
     initUsers,
-} from '../actions';
+} from '../actions.jsx';
 
 
 class Lottery extends Component {

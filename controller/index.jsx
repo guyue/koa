@@ -1,7 +1,8 @@
-const storage = require('../util/storage');
+require('babel-polyfill');
+import storage from '../util/storage';
 import React from 'react';
 import routes from '../common/routes.jsx';
-import reducers from '../common/reducers';
+import reducers from '../common/reducers.jsx';
 import ReactDOMServer from 'react-dom/server';
 import {
     createStore,

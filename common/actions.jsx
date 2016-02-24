@@ -1,8 +1,8 @@
 import {
     ActionConstants,
-} from './constants';
+} from './constants.jsx';
 
-import storage from '../static/src/js/storage.js';
+import storage from '../static/src/js/storage.jsx';
 
 /**
  * 生成glance action

@@ -1,5 +1,4 @@
 'use strict';
-require('babel-polyfill');
 
 const path = require('path');
 const  spdy = require('spdy');
@@ -60,7 +59,6 @@ register({
     ],
     extensions: [
         '.jsx',
-        '.js',
     ],
 });
 

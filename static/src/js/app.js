@@ -19,7 +19,7 @@ import {
     routeReducer,
 } from 'react-router-redux';
 
-import reducers from '../../../common/reducers';
+import reducers from '../../../common/reducers.jsx';
 import routes from '../../../common/routes.jsx';
 
 const reducer = combineReducers(Object.assign({}, reducers, {
