@@ -16,7 +16,7 @@ import {
 import $ from 'jquery';
 
 
-export default class User extends Component {
+export class User extends Component {
 
     componentDidMount() {
 
