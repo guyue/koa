@@ -15,27 +15,23 @@ import {
     browserHistory,
 } from 'react-router';
 import {
-    syncHistory,
-    routeReducer,
+	syncHistoryWithStore,
+    routerReducer,
 } from 'react-router-redux';
 
 import reducers from '../../../common/reducers.jsx';
 import routes from '../../../common/routes.jsx';
 
 const reducer = combineReducers(Object.assign({}, reducers, {
-    routing: routeReducer,
+    routing: routerReducer,
 }));
-const reduxRouterMiddleware = syncHistory(browserHistory);
-const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware)(createStore);
-
 /* eslint-disable no-underscore-dangle */
-const store = createStoreWithMiddleware(reducer, window.__INITIAL_STATE__);
+const store = createStore(reducer, window.__INITIAL_STATE__);
 /* eslint-enable no-underscore-dangle */
-
-reduxRouterMiddleware.listenForReplays(store);
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(<Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={history}>
         {routes}
     </Router>
 </Provider>, document.querySelector('#app'));

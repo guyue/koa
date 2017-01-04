@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const  spdy = require('spdy');
 const fs = require('fs');
 
 const koa = require('koa');
@@ -77,12 +76,4 @@ router.use('/*', indexRouter.routes());
 
 app.use(router.routes());
 
-const options = {
-    key: fs.readFileSync(__dirname + '/keys/server-key.pem'),
-    cert: fs.readFileSync(__dirname + '/keys/server-cert.pem'),
-    ca: fs.readFileSync(__dirname + '/keys/ca-cert.pem'),
-};
-
-const server = spdy.createServer(options, app.callback());
-
-server.listen(config.port);
+app.listen(config.port);

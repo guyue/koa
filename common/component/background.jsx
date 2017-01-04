@@ -12,6 +12,7 @@ export default class Background extends Component {
                 className="background"
                 autoPlay
                 loop
+                type="video/mp4"
                 src="http://7xqkdt.com1.z0.glb.clouddn.com/cloud.mp4" />
         );
     }
