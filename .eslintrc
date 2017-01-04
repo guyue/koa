@@ -45,7 +45,6 @@
         "no-iterator": 2,
         "no-labels": 2,
         "no-lone-blocks": 2,
-        "no-magic-numbers": 2,
         "no-multi-spaces": 2,
         "no-multi-str": 2,
         "no-native-reassign": 2,
@@ -100,7 +99,7 @@
         "no-undef-init": 2,
         "no-undef": 2,
         "no-undefined": 2,
-        "no-unused-vars": 2,
+		"no-unused-vars": 0,
         "no-use-before-define": 2,
         /* Variables Rules End */
 
@@ -231,29 +230,6 @@
             "always"
         ],
         "sort-vars": 2,
-        "space-after-keywords": 2,
-        "space-before-blocks": 2,
-        "space-before-function-paren": [
-            2,
-            {
-                "anonymous": "always",
-                "named": "never"
-            }
-        ],
-        "space-before-keywords": 2,
-        "space-in-parens": 2,
-        "space-infix-ops": [
-            2,
-            {
-                "int32Hint": false
-            }
-        ],
-        "space-return-throw-case": 2,
-        "space-unary-ops": 1,
-        "spaced-comment": [
-            2,
-            "always"
-        ],
         /* Stylistic Issues Rules End */
 
         /* ECMAScript 6 Rules Start */
@@ -265,7 +241,6 @@
         "arrow-spacing": 2,
         "constructor-super": 2,
         "generator-star-spacing": 2,
-        "no-arrow-condition": 2,
         "no-class-assign": 2,
         "no-const-assign": 2,
         "no-dupe-class-members": 2,
@@ -301,10 +276,12 @@
         "browser": true
     },
     "extends": "eslint:recommended",
-    "ecmaFeatures": {
-        "jsx": true,
-        "modules": true,
-        "experimentalObjectRestSpread": true
+	"parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
     "plugins": [
         "react"
