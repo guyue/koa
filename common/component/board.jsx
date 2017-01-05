@@ -36,7 +36,7 @@ export default class Board extends Component {
                 </div>
                 <div className="board">
                     <h1 className={classnames({
-                        crown: this.props.prize.key === 'first',
+                        crown: this.props.prize.key === 'super',
                     })}>
                         {this.props.prize.name}
                     </h1>
