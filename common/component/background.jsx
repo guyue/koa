@@ -8,7 +8,7 @@ export default class Background extends Component {
 
     render() {
         return (
-			<video
+			<div
                 className="background"
                 autoPlay
                 loop
